@@ -1,6 +1,6 @@
-import React from "react"
+import React from "react";
 
-const Loading = () => {
+export const Loading = () => {
   return (
     <svg
       width="120"
@@ -76,7 +76,5 @@ const Loading = () => {
         />
       </circle>
     </svg>
-  )
-}
-
-export default Loading
+  );
+};

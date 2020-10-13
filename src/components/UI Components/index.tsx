@@ -8,8 +8,8 @@ import {
   ContainerGrid,
 } from "./Container";
 import { SVGIcon } from "./SVGIcon";
-import Error from "./Error";
-import Loading from "./Loading";
+import { Error } from "./Error";
+import { Loading } from "./Loading";
 
 export {
   Nav,

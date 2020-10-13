@@ -8,7 +8,7 @@ export const AuthRoute = ({ component: Component, ...rest }) => {
   const history = useHistory();
 
   if (isAuthenticated && !isLoading) {
-    return history.push("/");
+    history.push("/");
   } else {
     return (
       <Route>

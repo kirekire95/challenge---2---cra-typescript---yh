@@ -2,8 +2,9 @@ import React from "react";
 import styled from "@emotion/styled";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export const SVGIcon = (props) => {
-  return <StyledSVGIcon {...props} className={`${props.className}`} />;
+export const SVGIcon = (props: any) => {
+  const { className } = props;
+  return <StyledSVGIcon {...props} className={`${className}`} />;
 };
 
 const StyledSVGIcon = styled(FontAwesomeIcon)`
