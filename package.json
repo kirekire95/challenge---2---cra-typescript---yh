@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@auth0/auth0-react": "^1.1.0",
+    "@apollo/client": "^3.2.4",
     "@emotion/core": "^10.0.35",
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-brands-svg-icons": "^5.15.1",

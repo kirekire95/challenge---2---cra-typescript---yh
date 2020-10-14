@@ -1,8 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from "react"
+import { Link } from "react-router-dom"
 
-import { ContainerFlex } from "../components/UI Components";
-import Layout from "../components/Layout/Layout";
+import { ContainerFlex } from "../components/UI Components"
+import Layout from "../components/Layout/Layout"
 
 const NotFoundPage = () => (
   <Layout>
@@ -12,6 +12,6 @@ const NotFoundPage = () => (
       <Link to="/">Back to home</Link>
     </ContainerFlex>
   </Layout>
-);
+)
 
-export default NotFoundPage;
+export default NotFoundPage

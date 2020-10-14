@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-import { useColorMode } from "theme-ui";
-import { useAuth0 } from "@auth0/auth0-react";
+import React, { useContext, useState } from "react"
+import { NavLink } from "react-router-dom"
+import { useColorMode } from "theme-ui"
 
-import { ToggleThemeMode } from "../../../utilities";
-import { NavigationLinks } from "../../../constants";
+import { AuthContext } from "../../../context"
+import { ToggleThemeMode } from "../../../utilities"
+import { NavigationLinks, ProfileLinks } from "../../../constants"
 import {
   Nav,
   NavUL,
@@ -12,50 +12,39 @@ import {
   SVGIcon,
   Profile,
   ProfileUL,
-  Loading,
-} from "../../UI Components";
+  Loading
+} from "../../UI Components"
 
 const Navbar = () => {
-  const [navbarOpen, setNavbarOpen] = useState(false);
-  const [profileOpen, setProfileOpen] = useState(false);
-  const [colorMode, setColorMode] = useColorMode();
+  const [navbarOpen, setNavbarOpen] = useState(false)
+  const [profileOpen, setProfileOpen] = useState(false)
+  const [colorMode, setColorMode] = useColorMode()
 
-  const {
-    error,
-    isAuthenticated,
-    isLoading,
-    user,
-    loginWithPopup,
-    loginWithRedirect,
-    logout,
-    getAccessTokenSilently,
-    getAccessTokenWithPopup,
-    getIdTokenClaims,
-  } = useAuth0();
+  const authContext = useContext(AuthContext)
 
-  const modes = ["light", "dark", "colorful"];
+  const modes = ["light", "dark", "colorful"]
 
   function cycleColorMode() {
-    const currentTheme = modes.indexOf(colorMode);
-    const nextTheme = (currentTheme + 1) % modes.length;
-    setColorMode(modes[nextTheme]);
+    const currentTheme = modes.indexOf(colorMode)
+    const nextTheme = (currentTheme + 1) % modes.length
+    setColorMode(modes[nextTheme])
   }
 
   function toggleNav() {
-    setNavbarOpen((navbarOpen) => !navbarOpen);
+    setNavbarOpen((navbarOpen) => !navbarOpen)
   }
 
   function toggleProfile() {
-    setProfileOpen((profileOpen) => !profileOpen);
+    setProfileOpen((profileOpen) => !profileOpen)
   }
 
   function logoutHandler() {
-    logout({ returnTo: window.location.origin });
-    toggleProfile();
+    authContext.logout()
+    toggleProfile()
   }
 
   function loggedInUser() {
-    if (isAuthenticated && !isLoading && user) {
+    if (authContext.authState?.userInfo?.username) {
       return (
         <React.Fragment>
           <Profile
@@ -64,26 +53,24 @@ const Navbar = () => {
             aria-label="Profile"
           >
             <figure>
-              <img src={user.picture} alt={user.name} />
+              <SVGIcon icon={["fas", "user"]} />
             </figure>
           </Profile>
           <ProfileUL className={profileOpen ? "open" : "closed"}>
-            {/* We could have /dashboard/profile/ID here, or do we even need that ID? Looks good I guess */}
+            <li>{authContext.authState.userInfo?.username}</li>
             <li>
               <NavLink
                 activeClassName="active"
-                to={`/dashboard/profile/${user.email}`}
+                to={`/dashboard/profile/${authContext.authState.userInfo?.email}}`}
+                onClick={logoutHandler}
               >
-                {user.email}
+                Logout
               </NavLink>
             </li>
-            <li>
-              <button onClick={logoutHandler}>Logout</button>
-            </li>
           </ProfileUL>
         </React.Fragment>
-      );
-    } else if (!isAuthenticated && !isLoading) {
+      )
+    } else if (!authContext.authState.userInfo?.username) {
       return (
         <React.Fragment>
           <Profile
@@ -96,31 +83,18 @@ const Navbar = () => {
             </figure>
           </Profile>
           <ProfileUL className={profileOpen ? "open" : "closed"}>
-            <li>
-              <button onClick={() => loginWithRedirect()}>Login</button>
-            </li>
+            {ProfileLinks.map((link) => {
+              return (
+                <li key={link.id}>
+                  <NavLink activeClassName="active" to={link.path}>
+                    {link.text}
+                  </NavLink>
+                </li>
+              )
+            })}
           </ProfileUL>
         </React.Fragment>
-      );
-    } else if (isLoading) {
-      return (
-        <React.Fragment>
-          <Profile
-            onClick={toggleProfile}
-            aria-checked={profileOpen}
-            aria-label="Profile"
-          >
-            <figure>
-              <SVGIcon icon={["fas", "user"]} />
-            </figure>
-          </Profile>
-          <ProfileUL className={profileOpen ? "open" : "closed"}>
-            <li>
-              <Loading />
-            </li>
-          </ProfileUL>
-        </React.Fragment>
-      );
+      )
     }
   }
 
@@ -148,7 +122,7 @@ const Navbar = () => {
                         {link.text}
                       </NavLink>
                     </li>
-                  );
+                  )
                 })}
               </NavModalUL>
             </div>
@@ -163,7 +137,7 @@ const Navbar = () => {
                 {link.text}
               </NavLink>
             </li>
-          );
+          )
         })}
       </NavUL>
       <div className="NavItems">
@@ -177,7 +151,7 @@ const Navbar = () => {
         {loggedInUser()}
       </div>
     </Nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

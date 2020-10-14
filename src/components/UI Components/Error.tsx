@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "@emotion/styled";
+import React from "react"
+import styled from "@emotion/styled"
 
 export const Error = (props: any) => {
-  const { message } = props;
+  const { message } = props
   return (
     <ErrorStyles>
       <h1>{message}</h1>
@@ -10,13 +10,13 @@ export const Error = (props: any) => {
         🤦‍♀️
       </span>
     </ErrorStyles>
-  );
-};
+  )
+}
 
 Error.defaultProps = {
-  message: "An error has occured...",
-};
+  message: "An error has occured..."
+}
 
 const ErrorStyles = styled.div`
   text-align: center;
-`;
+`

@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from "@emotion/styled"
 
 export const Profile = styled.div`
   position: relative;
@@ -20,7 +20,7 @@ export const Profile = styled.div`
     object-fit: cover;
     border-radius: 50%;
   }
-`;
+`
 
 export const ProfileUL = styled.ul`
   list-style: none;
@@ -37,4 +37,4 @@ export const ProfileUL = styled.ul`
     color: ${(props: any) => props.theme.colors.text};
     border-bottom-left-radius: 5px;
   }
-`;
+`

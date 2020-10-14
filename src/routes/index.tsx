@@ -1,4 +1,4 @@
-import { AuthRoute } from "./AuthRoute";
-import { PublicRoute } from "./PublicRoute";
+import { AuthRoute } from "./AuthRoute"
+import { PublicRoute } from "./PublicRoute"
 
-export { AuthRoute, PublicRoute };
+export { AuthRoute, PublicRoute }

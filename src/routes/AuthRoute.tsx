@@ -1,15 +1,16 @@
-import React from "react";
-import { useAuth0 } from "@auth0/auth0-react";
-import { useHistory } from "react-router-dom";
+import React, { useContext } from "react"
+import { useHistory } from "react-router-dom"
+
+import { AuthContext } from "../context"
 
 export const AuthRoute = (props: any) => {
-  const { component: Component, ...rest } = props;
-  const { isAuthenticated, isLoading } = useAuth0();
-  const history = useHistory();
+  const { component: Component, ...rest } = props
+  const authContext = useContext(AuthContext)
+  const history = useHistory()
 
-  if (isAuthenticated && !isLoading) {
-    history.push("/");
+  if (authContext.authState?.userInfo?.username) {
+    history.push("/")
   } else {
-    return <Component {...rest} />;
+    return <Component {...rest} />
   }
-};
+}

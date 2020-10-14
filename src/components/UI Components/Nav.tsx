@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from "@emotion/styled"
 
 export const Nav = styled.nav`
   position: sticky;
@@ -178,7 +178,7 @@ export const Nav = styled.nav`
     height: 100%;
     background-color: inherit;
   }
-`;
+`
 
 export const NavModalUL = styled.ul`
   display: flex;
@@ -187,7 +187,7 @@ export const NavModalUL = styled.ul`
   list-style: none;
   margin: auto;
   padding: 0;
-`;
+`
 
 export const NavUL = styled.ul`
   display: flex;
@@ -199,4 +199,4 @@ export const NavUL = styled.ul`
   @media only screen and (max-width: 990px) {
     display: none;
   }
-`;
+`
