@@ -1,7 +1,5 @@
 import styled from "@emotion/styled";
 
-import { ThemeProps } from "../../utilities/interface";
-
 export const Profile = styled.div`
   position: relative;
   width: 60px;
@@ -36,7 +34,7 @@ export const ProfileUL = styled.ul`
     right: 0;
     top: 100%;
     background-color: inherit;
-    color: ${(theme: ThemeProps) => theme?.colors?.text};
+    color: ${(props: any) => props.theme.colors.text};
     border-bottom-left-radius: 5px;
   }
 `;

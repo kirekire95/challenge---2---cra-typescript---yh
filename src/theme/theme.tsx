@@ -1,7 +1,5 @@
 import { tailwind, baseColors } from "@theme-ui/preset-tailwind";
 
-import { ThemeProps } from "../utilities/interface";
-
 export const paletteLight = {
   ...baseColors,
   textColor: baseColors.gray[9],
@@ -52,7 +50,7 @@ export const paletteColorful = {
 export const commonFocus = {
   outline: "none",
   transition: ".2s linear box-shadow",
-  boxShadow: (theme: ThemeProps) => `0 0 0 20px ${theme?.colors?.placeholder}`,
+  boxShadow: (theme: any) => `0 0 0 20px ${theme.colors.placeholder}`,
 };
 
 export default {
@@ -90,6 +88,7 @@ export default {
         muted: paletteDark.mutedColor,
         // Custom
         third: paletteDark.thirdColor,
+        placeholder: paletteDark.placeholderColor,
         activeLink: paletteDark.activeLinkColor,
         boxShadow: paletteDark.placeholderColor,
         navbar: paletteDark.navbarColor,
@@ -106,6 +105,7 @@ export default {
         muted: paletteColorful.placeholderColor,
         // Custom
         third: paletteColorful.thirdColor,
+        placeholder: paletteColorful.placeholderColor,
         activeLink: paletteColorful.activeLinkColor,
         boxShadow: paletteColorful.placeholderColor,
         navbar: paletteColorful.navbarColor,
@@ -192,8 +192,8 @@ export default {
       fontFamily: "heading",
       fontWeight: "heading",
       fontSize: ["mobile.9", "tablet.9", "desktop.9"],
-      color: (theme: ThemeProps) => `${theme?.colors?.text}`,
-      padding: (theme: ThemeProps) => `${theme?.spaceX?.[8]}`,
+      color: (theme: any) => `${theme.colors.text}`,
+      padding: (theme: any) => `${theme.spaceX[8]}`,
       textAlign: "center",
     },
     h2: {
@@ -201,40 +201,40 @@ export default {
       fontWeight: "heading",
       fontSize: ["mobile.7", "tablet.7", "desktop.7"],
       lineHeight: "heading",
-      color: (theme: ThemeProps) => `${theme?.colors?.primary}`,
-      padding: (theme: ThemeProps) => `${theme?.spaceX?.[6]}`,
+      color: (theme: any) => `${theme.colors.primary}`,
+      padding: (theme: any) => `${theme.spaceX[6]}`,
     },
     h3: {
       fontFamily: "heading",
       fontWeight: "heading",
       fontSize: ["mobile.5", "tablet.5", "desktop.5"],
       lineHeight: "heading",
-      color: (theme: ThemeProps) => `${theme?.colors?.primary}`,
-      padding: (theme: ThemeProps) => `${theme?.spaceX?.[4]}`,
+      color: (theme: any) => `${theme.colors.primary}`,
+      padding: (theme: any) => `${theme.spaceX[4]}`,
     },
     h4: {
       fontFamily: "heading",
       fontWeight: "heading",
       fontSize: ["mobile.4", "tablet.4", "desktop.4"],
       lineHeight: "heading",
-      color: (theme: ThemeProps) => `${theme?.colors?.primary}`,
-      padding: (theme: ThemeProps) => `${theme?.spaceX?.[2]}`,
+      color: (theme: any) => `${theme.colors.primary}`,
+      padding: (theme: any) => `${theme.spaceX[2]}`,
     },
     h5: {
       fontFamily: "heading",
       fontWeight: "heading",
       fontSize: ["mobile.3", "tablet.3", "desktop.3"],
       lineHeight: "heading",
-      color: (theme: ThemeProps) => `${theme?.colors?.primary}`,
-      padding: (theme: ThemeProps) => `${theme?.spaceX?.[2]}`,
+      color: (theme: any) => `${theme.colors.primary}`,
+      padding: (theme: any) => `${theme.spaceX[2]}`,
     },
     h6: {
       fontFamily: "heading",
       fontWeight: "heading",
       fontSize: ["mobile.2", "tablet.2", "desktop.2"],
       lineHeight: "heading",
-      color: (theme: ThemeProps) => `${theme?.colors?.primary}`,
-      padding: (theme: ThemeProps) => `${theme?.spaceX?.[2]}`,
+      color: (theme: any) => `${theme.colors.primary}`,
+      padding: (theme: any) => `${theme.spaceX[2]}`,
     },
     p: {
       fontSize: ["mobile.2", "tablet.2", "desktop.2"],
