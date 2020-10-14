@@ -1,4 +1,6 @@
-import Home from "./home";
-import NotFoundPage from "./404";
+import { lazy } from "react";
+
+const Home = lazy(() => import("./home"));
+const NotFoundPage = lazy(() => import("./404"));
 
 export { Home, NotFoundPage };
