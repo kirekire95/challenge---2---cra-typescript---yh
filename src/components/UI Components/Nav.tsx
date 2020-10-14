@@ -8,17 +8,17 @@ export const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: ${(props: ThemeProps) => props.theme.colors.background};
-  color: ${(props: ThemeProps) => props.theme.colors.text};
+  background-color: ${(theme: ThemeProps) => theme?.colors?.background};
+  color: ${(theme: ThemeProps) => theme?.colors?.text};
   z-index: 1;
   height: var(--navbar-height);
-  box-shadow: ${(props: ThemeProps) => props.theme.shadows[2]};
+  box-shadow: ${(theme: ThemeProps) => theme?.shadows?.[2]};
   user-select: none;
 
   li a {
     font-size: calc(0.7rem + 1vmin);
     text-decoration: none;
-    color: ${(props: ThemeProps) => props.theme.colors.text};
+    color: ${(theme: ThemeProps) => theme?.colors?.text};
     display: inline-block;
   }
 
@@ -62,7 +62,7 @@ export const Nav = styled.nav`
     width: 60px;
     height: 60px;
     padding: 1rem;
-    background-color: ${(props: ThemeProps) => props.theme.colors.background};
+    background-color: ${(theme: ThemeProps) => theme?.colors?.background};
     display: flex;
     align-items: center;
     justify-content: center;
@@ -74,7 +74,7 @@ export const Nav = styled.nav`
     position: relative;
     width: 100%;
     height: 3px;
-    background-color: ${(props: ThemeProps) => props.theme.colors.text};
+    background-color: ${(theme: ThemeProps) => theme?.colors?.text};
     display: flex;
     align-items: center;
     justify-content: center;
@@ -91,7 +91,7 @@ export const Nav = styled.nav`
     top: -9px;
     width: 100%;
     height: 3px;
-    background-color: ${(props: ThemeProps) => props.theme.colors.text};
+    background-color: ${(theme: ThemeProps) => theme?.colors?.text};
   }
 
   /* Moves line down */
@@ -152,7 +152,7 @@ export const Nav = styled.nav`
   }
 
   .menuWrap .menu > div {
-    background-color: ${(props: ThemeProps) => props.theme.colors.muted};
+    background-color: ${(theme: ThemeProps) => theme?.colors?.muted};
     border-radius: 50%;
     width: 200vw;
     height: 200vh;
@@ -172,7 +172,7 @@ export const Nav = styled.nav`
   }
 
   .active {
-    color: ${(props: ThemeProps) => props.theme.colors.activeLink};
+    color: ${(theme: ThemeProps) => theme?.colors?.activeLink};
   }
 
   .NavItems {

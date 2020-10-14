@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 
 import { ThemeProps } from "../../utilities/interface";
 
-export const Container = (props: ThemeProps) => {
+export const Container = (props: any) => {
   const { className, children } = props;
   return (
     <StyledContainer {...props} className={`${className}`}>
@@ -14,11 +14,11 @@ export const Container = (props: ThemeProps) => {
 
 const StyledContainer = styled.section`
   min-height: inherit;
-  max-width: ${(props: ThemeProps) => props.theme.sizes.container[2]};
-  margin: ${(props: ThemeProps) => props.theme.space[1]};
+  max-width: ${(theme: ThemeProps) => theme?.sizes?.container[2]};
+  margin: ${(theme: ThemeProps) => theme?.space?.[1]};
   padding: 0 0 2rem 0;
   @media (min-width: 500px) {
-    width: ${(props: ThemeProps) => props.theme.sizes.percent[2]};
+    width: ${(theme: ThemeProps) => theme?.sizes?.percent[2]};
   }
 `;
 
@@ -33,10 +33,10 @@ export const ContainerSmall = (props: any) => {
 
 const StyledContainerSmall = styled.div`
   min-height: inherit;
-  max-width: ${(props: ThemeProps) => props.theme.sizes.container[0]};
-  margin: ${(props: ThemeProps) => props.theme.space[1]};
+  max-width: ${(theme: ThemeProps) => theme?.sizes?.container[0]};
+  margin: ${(theme: ThemeProps) => theme?.space?.[1]};
   @media (min-width: 500px) {
-    width: ${(props: ThemeProps) => props.theme.sizes.percent[2]};
+    width: ${(theme: ThemeProps) => theme?.sizes?.percent[2]};
   }
 `;
 
@@ -73,5 +73,5 @@ const StyledGridContainer = styled.section`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
-  padding: ${(props: ThemeProps) => props.theme.spaceX[4]};
+  padding: ${(theme: ThemeProps) => theme?.spaceX?.[4]};
 `;

@@ -1,7 +1,9 @@
 import React from "react";
 import { Global, css } from "@emotion/core";
+import { useThemeUI } from "theme-ui";
 
 export const GlobalStyle = () => {
+  const themeContext = useThemeUI();
   return (
     <Global
       styles={css`
@@ -51,16 +53,14 @@ export const GlobalStyle = () => {
         body::-webkit-scrollbar-thumb,
         pre::-webkit-scrollbar-thumb {
           box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-          background-color: ${themeContext.theme.colors.backgroundColor ||
-          themeContext.theme.colors.background};
-          border-radius: ${themeContext.theme.radii[2]};
+          background-color: ${themeContext?.theme?.colors?.background};
+          border-radius: ${themeContext?.theme?.radii?.[2]};
         }
 
         body::-webkit-scrollbar-track,
         pre::-webkit-scrollbar-track {
           box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-          background-color: ${themeContext.theme.colors.thirdColor ||
-          themeContext.theme.colors.third};
+          background-color: ${themeContext?.theme?.colors?.third};
         }
       `}
     />

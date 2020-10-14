@@ -1,7 +1,9 @@
 import { tailwind, baseColors } from "@theme-ui/preset-tailwind";
 
+import { ThemeProps } from "../utilities/interface";
+
 export const paletteLight = {
-  ...tailwind.colors,
+  ...baseColors,
   textColor: baseColors.gray[9],
   backgroundColor: "hsl(0, 0%, 100%)",
   primaryColor: "#efb6b2",
@@ -17,7 +19,7 @@ export const paletteLight = {
 };
 
 export const paletteDark = {
-  ...tailwind.colors,
+  ...baseColors,
   textColor: "#fff",
   backgroundColor: "hsl(212, 22%, 15%)",
   primaryColor: "#fff",
@@ -33,7 +35,7 @@ export const paletteDark = {
 };
 
 export const paletteColorful = {
-  ...tailwind.colors,
+  ...baseColors,
   textColor: "hsl(350, 100%, 88%)",
   backgroundColor: "hsla(200, 47%, 66%, 1)",
   primaryColor: "hsla(200, 47%, 66%, 1)",
@@ -50,8 +52,7 @@ export const paletteColorful = {
 export const commonFocus = {
   outline: "none",
   transition: ".2s linear box-shadow",
-  boxShadow: (theme) =>
-    `0 0 0 20px ${theme.colors.placeholderColor || theme.colors.placeholder}`,
+  boxShadow: (theme: ThemeProps) => `0 0 0 20px ${theme?.colors?.placeholder}`,
 };
 
 export default {
@@ -72,11 +73,11 @@ export default {
     muted: paletteLight.mutedColor,
     // Custom
     third: paletteLight.thirdColor,
-    placeholderLight: paletteLight.placeholderColor,
-    activeLinkLight: paletteLight.activeLinkColor,
-    boxShadowLight: paletteLight.placeholderColor,
-    navbarLight: paletteLight.navbarColor,
-    errorColor: paletteLight.errorColor,
+    placeholder: paletteLight.placeholderColor,
+    activeLink: paletteLight.activeLinkColor,
+    boxShadow: paletteLight.placeholderColor,
+    navbar: paletteLight.navbarColor,
+    error: paletteLight.errorColor,
     modes: {
       dark: {
         ...paletteDark,
@@ -88,11 +89,11 @@ export default {
         highlight: paletteDark.highlightColor,
         muted: paletteDark.mutedColor,
         // Custom
-        thirdColor: paletteDark.thirdColor,
-        activeLinkColor: paletteDark.activeLinkColor,
-        boxShadowColor: paletteDark.placeholderColor,
-        navbarColor: paletteDark.navbarColor,
-        errorColor: paletteDark.errorColor,
+        third: paletteDark.thirdColor,
+        activeLink: paletteDark.activeLinkColor,
+        boxShadow: paletteDark.placeholderColor,
+        navbar: paletteDark.navbarColor,
+        error: paletteDark.errorColor,
       },
       colorful: {
         ...paletteColorful,
@@ -104,33 +105,17 @@ export default {
         highlight: paletteColorful.placeholderColor,
         muted: paletteColorful.placeholderColor,
         // Custom
-        thirdColor: paletteColorful.thirdColor,
-        activeLinkColor: paletteColorful.activeLinkColor,
-        boxShadowColor: paletteColorful.placeholderColor,
-        navbarColor: paletteColorful.navbarColor,
-        errorColor: paletteColorful.errorColor,
-      },
-      nature: {
-        ...paletteNature,
-        text: paletteNature.textColor,
-        background: paletteNature.backgroundColor,
-        primary: paletteNature.primaryColor,
-        secondary: paletteNature.secondaryColor,
-        accent: paletteNature.accentColor,
-        highlight: paletteNature.highlightColor,
-        muted: paletteNature.mutedColor,
-        // Custom
-        thirdColor: paletteNature.thirdColor,
-        activeLinkColor: paletteNature.activeLinkColor,
-        boxShadowColor: paletteNature.placeholderColor,
-        navbarColor: paletteNature.navbarColor,
-        errorColor: paletteNature.errorColor,
+        third: paletteColorful.thirdColor,
+        activeLink: paletteColorful.activeLinkColor,
+        boxShadow: paletteColorful.placeholderColor,
+        navbar: paletteColorful.navbarColor,
+        error: paletteColorful.errorColor,
       },
     },
   },
-  space: [0, "auto", "1rem", "1.25rem", "1.5rem", "1.75rem", "2rem"],
+  space: ["0", "auto", "1rem", "1.25rem", "1.5rem", "1.75rem", "2rem"],
   spaceX: [
-    0,
+    "0",
     "auto",
     "0.5rem 0",
     "0.75rem 0",
@@ -141,7 +126,7 @@ export default {
     "2rem 0",
   ],
   spaceY: [
-    0,
+    "0",
     "auto",
     "0 0.5rem ",
     "0 0.75rem",
@@ -151,7 +136,7 @@ export default {
     "0 1.75rem",
     "0 2rem",
   ],
-  radii: [0, "3px", "5px", "10px", "20px", "50px"],
+  radii: ["0", "3px", "5px", "10px", "20px", "50px"],
   fonts: {
     /* You can put whatever you want here - for example hello instead of body, but it is a convention so that it is easier to use other themes with the same naming */
     body: "Noto Serif",
@@ -203,79 +188,56 @@ export default {
       paddingBottom: 3,
       paddingTop: 3,
     },
-    Main: {},
     h1: {
-      primary: {
-        color: (theme) =>
-          `${theme.colors.primaryColor || theme.colors.primary}`,
-        fontSize: "1.2rem",
-        letterSpacing: "2px",
-        fontWeight: "normal",
-      },
-      secondary: {
-        fontFamily: "heading",
-        fontWeight: "heading",
-        fontSize: ["mobile.9", "tablet.9", "desktop.9"],
-        color: (theme) => `${theme.colors.textColor || theme.colors.text}`,
-        padding: (theme) => `${theme.spaceX[8]}`,
-        textAlign: "center",
-      },
+      fontFamily: "heading",
+      fontWeight: "heading",
+      fontSize: ["mobile.9", "tablet.9", "desktop.9"],
+      color: (theme: ThemeProps) => `${theme?.colors?.text}`,
+      padding: (theme: ThemeProps) => `${theme?.spaceX?.[8]}`,
+      textAlign: "center",
     },
     h2: {
-      primary: {
-        textAlign: "center",
-        marginTop: "60px",
-        fontSize: "2.6rem",
-      },
-      secondary: {
-        fontFamily: "heading",
-        fontWeight: "heading",
-        fontSize: ["mobile.7", "tablet.7", "desktop.7"],
-        lineHeight: "heading",
-        color: (theme) =>
-          `${theme.colors.primaryColor || theme.colors.primary}`,
-        padding: (theme) => `${theme.spaceX[6]}`,
-      },
+      fontFamily: "heading",
+      fontWeight: "heading",
+      fontSize: ["mobile.7", "tablet.7", "desktop.7"],
+      lineHeight: "heading",
+      color: (theme: ThemeProps) => `${theme?.colors?.primary}`,
+      padding: (theme: ThemeProps) => `${theme?.spaceX?.[6]}`,
     },
     h3: {
       fontFamily: "heading",
       fontWeight: "heading",
       fontSize: ["mobile.5", "tablet.5", "desktop.5"],
       lineHeight: "heading",
-      color: (theme) => `${theme.colors.primaryColor || theme.colors.primary}`,
-      padding: (theme) => `${theme.spaceX[4]}`,
+      color: (theme: ThemeProps) => `${theme?.colors?.primary}`,
+      padding: (theme: ThemeProps) => `${theme?.spaceX?.[4]}`,
     },
     h4: {
       fontFamily: "heading",
       fontWeight: "heading",
       fontSize: ["mobile.4", "tablet.4", "desktop.4"],
       lineHeight: "heading",
-      color: (theme) => `${theme.colors.primaryColor || theme.colors.primary}`,
-      padding: (theme) => `${theme.spaceX[2]}`,
+      color: (theme: ThemeProps) => `${theme?.colors?.primary}`,
+      padding: (theme: ThemeProps) => `${theme?.spaceX?.[2]}`,
     },
     h5: {
       fontFamily: "heading",
       fontWeight: "heading",
       fontSize: ["mobile.3", "tablet.3", "desktop.3"],
       lineHeight: "heading",
-      color: (theme) => `${theme.colors.primaryColor || theme.colors.primary}`,
-      padding: (theme) => `${theme.spaceX[2]}`,
+      color: (theme: ThemeProps) => `${theme?.colors?.primary}`,
+      padding: (theme: ThemeProps) => `${theme?.spaceX?.[2]}`,
     },
     h6: {
       fontFamily: "heading",
       fontWeight: "heading",
       fontSize: ["mobile.2", "tablet.2", "desktop.2"],
       lineHeight: "heading",
-      color: (theme) => `${theme.colors.primaryColor || theme.colors.primary}`,
-      padding: (theme) => `${theme.spaceX[2]}`,
+      color: (theme: ThemeProps) => `${theme?.colors?.primary}`,
+      padding: (theme: ThemeProps) => `${theme?.spaceX?.[2]}`,
     },
     p: {
-      primary: {
-        textAlign: "center",
-      },
-      secondary: {
-        fontSize: ["mobile.2", "tablet.2", "desktop.2"],
-      },
+      fontSize: ["mobile.2", "tablet.2", "desktop.2"],
     },
     blockquote: {
       backgroundColor: "muted",

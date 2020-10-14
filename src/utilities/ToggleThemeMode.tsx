@@ -1,15 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
 
-type Props = {
-  className: string;
-};
-
-type Options = {
-  onClick: Function;
-};
-
-export const ToggleThemeMode: React.FC<Options> = (props) => {
+export const ToggleThemeMode = (props: any) => {
   const { className, children } = props;
   return (
     <button

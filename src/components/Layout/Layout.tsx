@@ -9,7 +9,11 @@ import theme from "../../theme/theme";
 
 import { config, library } from "@fortawesome/fontawesome-svg-core";
 
-import { faAdjust, faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import {
+  faAdjust,
+  faCheckCircle,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 
 import {
   faLinkedin,
@@ -27,7 +31,8 @@ library.add(
   faLinkedin,
   faLinkedinIn,
   faGithub,
-  faGithubSquare
+  faGithubSquare,
+  faUser
 );
 
 const Layout: React.FC = ({ children }) => {
