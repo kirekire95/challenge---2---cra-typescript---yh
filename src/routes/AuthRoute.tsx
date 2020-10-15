@@ -1,3 +1,6 @@
+// FIXME: Remove this later
+// @ts-nocheck
+
 import React, { useContext } from "react"
 import { useHistory } from "react-router-dom"
 

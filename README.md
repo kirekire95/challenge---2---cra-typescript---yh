@@ -21,3 +21,11 @@
 ### Todo
 
 - Create Apollo Server Node.js + MongoDB Backend with JWT Authentication
+
+### Learnings
+
+- You can not use `@ts-ignore` for a block in TS. https://stackoverflow.com/questions/51145180/how-to-use-ts-ignore-for-a-block. But as a workaround you can use a comment at the top of a file to disable type-checking for that file like this:
+
+```ts
+// @ts-nocheck
+```

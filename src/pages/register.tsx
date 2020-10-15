@@ -1,10 +1,13 @@
+// FIXME: Remove this later
+// @ts-nocheck
+
 import React, { useState, useContext } from "react"
 import styled from "@emotion/styled"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useMutation } from "@apollo/client"
 
 import { AuthContext } from "../context"
-import { PrimaryButton, ErrorContainer } from "../components/UI Components"
+import { Button, displayNotification } from "../components/UI Components"
 import { REGISTER_USER } from "../queries"
 import Layout from "../components/Layout/Layout"
 
@@ -148,19 +151,11 @@ const Register = (props: any) => {
               <StyledSVGIcon className="SVGIcon" icon={["fas", "envelope"]} />
             </RelativeIconContainer>
           </div>
-          <PrimaryButton full type="submit">
+          <Button full type="submit">
             {loading ? "Registering..." : "Register"}
-          </PrimaryButton>
+          </Button>
         </StyledForm>
-        {Object.keys(errors).length > 0 && (
-          <ErrorContainer>
-            <ul>
-              {Object.values(errors).map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </ErrorContainer>
-        )}
+        {/* {displayNotification(errors, isSuccess, "Success")} */}
       </StyledContainer>
     </Layout>
   )

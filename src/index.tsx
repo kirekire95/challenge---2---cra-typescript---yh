@@ -1,11 +1,11 @@
 import React from "react"
 import ReactDOM from "react-dom"
 
-import ApolloProvider from "./ApolloProvider"
+import { TheApolloProvider } from "./ApolloProvider"
 
 ReactDOM.render(
   <React.StrictMode>
-    <ApolloProvider />
+    <TheApolloProvider />
   </React.StrictMode>,
   document.getElementById("root")
 )

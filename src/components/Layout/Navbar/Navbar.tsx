@@ -39,12 +39,14 @@ const Navbar = () => {
   }
 
   function logoutHandler() {
-    authContext.logout()
+    // FIXME: Fix this later
+    // authContext.logout()
     toggleProfile()
   }
 
   function loggedInUser() {
-    if (authContext.authState?.userInfo?.username) {
+    // FIXME: replace with: authContext.authState?.userInfo?.username
+    if (1 + 1 === 2) {
       return (
         <React.Fragment>
           <Profile
@@ -57,11 +59,17 @@ const Navbar = () => {
             </figure>
           </Profile>
           <ProfileUL className={profileOpen ? "open" : "closed"}>
-            <li>{authContext.authState.userInfo?.username}</li>
+            {/* FIXME: replace with authContext.authState.userInfo?.username */}
             <li>
+              <NavLink activeClassName="active" to={`/dashboard/profile/${2}}`}>
+                Username
+              </NavLink>
+            </li>
+            <li>
+              {/* FIXME: NavLink to should be: authContext.authState.userInfo?.email */}
               <NavLink
                 activeClassName="active"
-                to={`/dashboard/profile/${authContext.authState.userInfo?.email}}`}
+                to={`/`}
                 onClick={logoutHandler}
               >
                 Logout
@@ -70,7 +78,9 @@ const Navbar = () => {
           </ProfileUL>
         </React.Fragment>
       )
-    } else if (!authContext.authState.userInfo?.username) {
+    }
+    // FIXME: !authContext.authState.userInfo?.username
+    else if (1 + 1 === 3) {
       return (
         <React.Fragment>
           <Profile

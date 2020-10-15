@@ -1,7 +1,9 @@
 // Not in use yet, implement backend
+// FIXME: Remove this later
+// @ts-nocheck
 import React, { createContext, useEffect, useState } from "react"
 
-const AuthContext = createContext()
+const AuthContext = createContext({})
 const { Provider } = AuthContext
 
 const isBrowser = () => typeof window !== "undefined"
@@ -48,21 +50,23 @@ const AuthProvider = ({ children }) => {
     if (!authState) {
       return false
     }
-    if (!authState.token || !authState.expiresAt) {
+    if (!authState?.token || !authState?.expiresAt) {
       return false
     }
-    return new Date().getTime() / 1000 < authState.expiresAt
+    return new Date().getTime() / 1000 < authState?.expiresAt
   }
 
   const isAdmin = () => {
-    return authState.userInfo.role === "admin"
+    return authState?.userInfo?.role === "admin"
   }
+
+  console.log("HEEEEJ")
 
   return (
     <Provider
       value={{
         authState,
-        setAuthState: (authInfo) => setAuthInfo(authInfo),
+        setAuthState: (authInfo: any) => setAuthInfo(authInfo),
         logout,
         isAuthenticated,
         isAdmin

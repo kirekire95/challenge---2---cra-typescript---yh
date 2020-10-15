@@ -1,5 +1,4 @@
 import React from "react"
-import App from "./App"
 import {
   ApolloProvider,
   ApolloClient,
@@ -7,6 +6,8 @@ import {
   InMemoryCache
 } from "@apollo/client"
 import { setContext } from "@apollo/client/link/context"
+
+import App from "./App"
 
 const httpLink = new HttpLink({
   uri: "sssss"
@@ -26,7 +27,7 @@ const client = new ApolloClient({
   link: authLink.concat(httpLink)
 })
 
-export default (
+export const TheApolloProvider = () => (
   <ApolloProvider client={client}>
     <App />
   </ApolloProvider>

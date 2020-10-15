@@ -1,34 +1,36 @@
 interface ThemeProps {
-  sizes?: any;
-  space?: any[];
-  spaceX?: any[];
-  spaceY?: any[];
-  shadows?: any[];
-  radii?: any[];
+  sizes?: any
+  space?: any[]
+  spaceX?: any[]
+  spaceY?: any[]
+  shadows?: any[]
+  radii?: any[]
   colors?: {
-    background?: any;
-    text?: any;
-    primary?: any;
-    secondary?: any;
-    accent?: any;
-    highlight?: any;
-    muted?: any;
+    background?: any
+    text?: any
+    primary?: any
+    secondary?: any
+    accent?: any
+    highlight?: any
+    muted?: any
     // Custom
-    third?: any;
-    placeholder?: any;
-    activeLink?: any;
-    boxShadow?: any;
-    navbar?: any;
-    error?: any;
-  };
+    third?: any
+    placeholder?: any
+    activeLink?: any
+    boxShadow?: any
+    navbar?: any
+    error?: any
+  }
+}
 
+interface CommonProps {
   // This is probably not correct at all, especially not using className and children. Just using it now to get rid of typescript errors
   // className?: any;
-  // children?: ReactNode;
+  // children?: React.ReactNode;
 }
 
 interface StyledProps {
-  large?: string;
+  large?: string
 }
 
-export type { ThemeProps, StyledProps };
+export type { ThemeProps, StyledProps, CommonProps }
