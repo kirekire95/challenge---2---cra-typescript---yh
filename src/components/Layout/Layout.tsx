@@ -1,29 +1,30 @@
-import React from "react";
-import { ThemeProvider as StyledThemeProvider, Styled } from "theme-ui";
+import React from "react"
+import { ThemeProvider as StyledThemeProvider, Styled } from "theme-ui"
 
-import { GlobalStyle } from "../../styles";
-import Navbar from "./Navbar/Navbar";
-import { Main } from "../UI Components";
-import Footer from "./Footer/Footer";
-import theme from "../../theme/theme";
+import { GlobalStyle } from "../../styles"
+import Navbar from "./Navbar/Navbar"
+import { Main } from "../UI Components"
+import Footer from "./Footer/Footer"
+import theme from "../../theme/theme"
 
-import { config, library } from "@fortawesome/fontawesome-svg-core";
+import { config, library } from "@fortawesome/fontawesome-svg-core"
 
 import {
   faAdjust,
   faCheckCircle,
   faUser,
-} from "@fortawesome/free-solid-svg-icons";
+  faExclamationTriangle
+} from "@fortawesome/free-solid-svg-icons"
 
 import {
   faLinkedin,
   faLinkedinIn,
   faGithub,
-  faGithubSquare,
-} from "@fortawesome/free-brands-svg-icons";
+  faGithubSquare
+} from "@fortawesome/free-brands-svg-icons"
 
-import "@fortawesome/fontawesome-svg-core/styles.css";
-config.autoAddCss = false;
+import "@fortawesome/fontawesome-svg-core/styles.css"
+config.autoAddCss = false
 
 library.add(
   faAdjust,
@@ -32,8 +33,9 @@ library.add(
   faLinkedinIn,
   faGithub,
   faGithubSquare,
-  faUser
-);
+  faUser,
+  faExclamationTriangle
+)
 
 const Layout: React.FC = ({ children }) => {
   return (
@@ -45,7 +47,7 @@ const Layout: React.FC = ({ children }) => {
         <Footer />
       </Styled.root>
     </StyledThemeProvider>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout
