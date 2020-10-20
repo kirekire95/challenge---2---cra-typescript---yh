@@ -1,3 +1,6 @@
+/** @jsx jsx */
+import { jsx } from "theme-ui"
+
 // FIXME: Remove this later
 // @ts-nocheck
 
@@ -7,7 +10,7 @@ import { useQuery } from "@apollo/client"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 import { AuthContext } from "../context"
-import { GET_POSTS } from "../queries"
+import { GET_USERS } from "../queries"
 import {
   Loading,
   Error,
@@ -16,14 +19,21 @@ import {
   ContainerGrid
 } from "../components/UI Components"
 import Layout from "../components/Layout/Layout"
+import { UserCard } from "../components/User"
 
 const Home = () => {
   const authContext = useContext(AuthContext)
   console.log("home authContext", authContext)
-  const { loading, error, data } = useQuery(GET_POSTS, {
+  const { loading, error, data } = useQuery(GET_USERS, {
     skip: !authContext.authState?.userInfo?.username
   })
-  console.log("Pages/Home", data)
+
+  if (data) {
+    console.log("Pages/Home", data)
+  }
+
+  console.log("Loading", loading)
+  console.log("Error", error)
 
   const renderContent = () => {
     if (error) {
@@ -41,19 +51,23 @@ const Home = () => {
     } else if (data && authContext.authState?.userInfo?.username) {
       return (
         <React.Fragment>
-          <h2>Your posts</h2>
-          {/* <ContainerGrid>
-            {data.getPosts.length === 0 ? (
+          <Styled.h1>Users</Styled.h1>
+          <Styled.h2 sx={{ textAlign: "center" }}>
+            Total Users: {data.getUsers.length}
+          </Styled.h2>
+          <ContainerGrid>
+            {data.getUsers.length === 0 ? (
               <h2>There is nothing to see here...</h2>
             ) : (
-              data.getPosts.map((item) => (
-                <PostCard key={item.id} post={item} />
+              data.getUsers.map((item) => (
+                <UserCard key={item.id} userData={item} />
               ))
             )}
-          </ContainerGrid> */}
+          </ContainerGrid>
         </React.Fragment>
       )
-    } else if (!authContext.authState?.userInfo?.username) {
+      // FIXME: !authContext.authState?.userInfo?.username
+    } else if (1 + 1 === 3) {
       return (
         <ContainerFlex>
           <div>
@@ -72,18 +86,18 @@ const Home = () => {
     }
   }
 
-  const ShowCreatePost = () => {
-    if (authContext.authState?.userInfo?.username) {
-      // return <PostAddForm />;
-    } else {
-      return null
-    }
-  }
+  // const ShowCreatePost = () => {
+  //   if (authContext.authState?.userInfo?.username) {
+  //     // return <PostAddForm />;
+  //   } else {
+  //     return null
+  //   }
+  // }
 
   return (
     <Layout>
       <Container>
-        {ShowCreatePost()}
+        {/* {ShowCreatePost()} */}
         {renderContent()}
       </Container>
     </Layout>

@@ -1,68 +1,69 @@
 import { gql } from "@apollo/client"
 
 const GET_USERS = gql`
-  query getUsers {
+  query {
     getUsers {
-      id
+      _id
       username
       password
       email
       createdAt
-      isAdmin
     }
   }
 `
 
 const GET_USER = gql`
-  query getUser($userId: ID!) {
-    getUser(userId: $userId) {
-      id
+  query getUser($getUserUserId: ID!) {
+    getUser(userId: $getUserUserId) {
+      _id
       username
-      password
       email
-      isAdmin
+      password
+      createdAt
     }
   }
 `
 
 const LOGIN_USER = gql`
-  mutation loginUser($username: String!, $password: String!) {
-    loginUser(username: $username, password: $password) {
+  mutation loginUser($loginUserPassword: String!, $loginUserUsername: String!) {
+    loginUser(password: $loginUserPassword, username: $loginUserUsername) {
       userInfo {
-        id
+        _id
         username
+        password
         email
-        isAdmin
+        createdAt
       }
-      expiresAt
+      message
       token
+      expiresAt
     }
   }
 `
 
 const REGISTER_USER = gql`
-  mutation addUser(
-    $username: String!
-    $password: String!
-    $confirmPassword: String!
-    $email: String!
-    $isAdmin: Boolean!
+  mutation AddUserMutation(
+    $addUserConfirmPassword: String!
+    $addUserEmail: String!
+    $addUserPassword: String!
+    $addUserUsername: String!
   ) {
     addUser(
-      username: $username
-      password: $password
-      confirmPassword: $confirmPassword
-      email: $email
-      isAdmin: $isAdmin
+      confirmPassword: $addUserConfirmPassword
+      email: $addUserEmail
+      password: $addUserPassword
+      username: $addUserUsername
     ) {
       userInfo {
-        id
+        _id
         username
+        password
         email
-        isAdmin
+        createdAt
       }
-      expiresAt
+      message
       token
+      expiresAt
     }
   }
 `
@@ -70,41 +71,37 @@ const REGISTER_USER = gql`
 // need to update edit user to userInfo
 
 const EDIT_USER = gql`
-  mutation editUser(
-    $userId: ID!
-    $username: String
-    $password: String
-    $confirmPassword: String
-    $email: String
-    $isAdmin: Boolean
+  mutation EditUserMutation(
+    $editUserUserId: ID!
+    $editUserUsername: String
+    $editUserPassword: String
+    $editUserEmail: String
+    $editUserConfirmPassword: String
   ) {
     editUser(
-      userId: $userId
-      username: $username
-      password: $password
-      confirmPassword: $confirmPassword
-      email: $email
-      isAdmin: $isAdmin
+      userId: $editUserUserId
+      username: $editUserUsername
+      password: $editUserPassword
+      email: $editUserEmail
+      confirmPassword: $editUserConfirmPassword
     ) {
-      id
-      email
+      _id
       username
+      email
       password
-      isAdmin
+      createdAt
     }
   }
 `
 
-// need to update delete user to userInfo
-
 const DELETE_USER = gql`
-  mutation deleteUser($userId: ID!) {
-    deleteUser(userId: $userId) {
-      id
+  mutation deleteUser($deleteUserUserId: ID!) {
+    deleteUser(userId: $deleteUserUserId) {
+      _id
       username
       password
       email
-      isAdmin
+      createdAt
     }
   }
 `
@@ -202,6 +199,8 @@ const DELETE_POST = gql`
     }
   }
 `
+
+// File Upload, not implemented - yet
 
 const UPLOAD_FILE = gql`
   mutation uploadFile($file: Upload!) {

@@ -6,12 +6,12 @@ export const NavigationLinks = [
   },
   {
     id: 2,
-    path: "/login",
+    path: "/dashboard/login",
     text: "Login"
   },
   {
     id: 3,
-    path: "/register",
+    path: "/dashboard/register",
     text: "Register"
   }
 ]

@@ -7,7 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useMutation } from "@apollo/client"
 
 import { AuthContext } from "../context"
-import { Button, displayNotification } from "../components/UI Components"
+// displayNotification
+import { Button } from "../components/UI Components"
 import { useForm } from "../utilities"
 import { LOGIN_USER } from "../queries"
 import Layout from "../components/Layout/Layout"
@@ -95,7 +96,7 @@ const Login = (props: any) => {
               <StyledSVGIcon className="SVGIcon" icon={["fas", "lock"]} />
             </RelativeIconContainer>
           </div>
-          <Button full type="submit">
+          <Button full="full" type="submit">
             {loading ? "Logging in..." : "Login"}
           </Button>
         </StyledForm>

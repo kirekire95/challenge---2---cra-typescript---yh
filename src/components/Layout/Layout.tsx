@@ -13,7 +13,8 @@ import {
   faAdjust,
   faCheckCircle,
   faUser,
-  faExclamationTriangle
+  faExclamationTriangle,
+  faLock
 } from "@fortawesome/free-solid-svg-icons"
 
 import {
@@ -34,7 +35,8 @@ library.add(
   faGithub,
   faGithubSquare,
   faUser,
-  faExclamationTriangle
+  faExclamationTriangle,
+  faLock
 )
 
 const Layout: React.FC = ({ children }) => {

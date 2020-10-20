@@ -19,19 +19,19 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <!-- I came up with this myself to prevent the FOUC flash that occurs on CRA -->
+    <!-- I came up with this myself to prevent the FOUC flash that occurs in CRA -->
     <script>
-      (function () {
+      ;(function () {
         try {
-          const mode = localStorage.getItem("theme-ui-color-mode");
+          const mode = localStorage.getItem("theme-ui-color-mode")
           if (!mode) {
-            return;
+            return
           }
-          document.body.classList.add(`theme-ui-${mode}`);
+          document.body.classList.add(`theme-ui-${mode}`)
         } catch (e) {
-          console.log(e);
+          console.log(e)
         }
-      })();
+      })()
     </script>
     <div id="root"></div>
   </body>

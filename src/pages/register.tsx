@@ -7,7 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useMutation } from "@apollo/client"
 
 import { AuthContext } from "../context"
-import { Button, displayNotification } from "../components/UI Components"
+// displayNotification
+import { Button } from "../components/UI Components"
 import { REGISTER_USER } from "../queries"
 import Layout from "../components/Layout/Layout"
 
@@ -151,7 +152,7 @@ const Register = (props: any) => {
               <StyledSVGIcon className="SVGIcon" icon={["fas", "envelope"]} />
             </RelativeIconContainer>
           </div>
-          <Button full type="submit">
+          <Button full="full" type="submit">
             {loading ? "Registering..." : "Register"}
           </Button>
         </StyledForm>

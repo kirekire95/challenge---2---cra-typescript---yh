@@ -13,11 +13,9 @@ export const Container = (props: any) => {
 const StyledContainer = styled.section`
   min-height: inherit;
   max-width: ${(props: any) => props.theme.sizes.container[2]};
+  width: 90%;
   margin: ${(props: any) => props.theme.space[1]};
-  padding: 0 0 2rem 0;
-  @media (min-width: 500px) {
-    width: ${(props: any) => props.theme.sizes.percent[2]};
-  }
+  padding-bottom: ${(props: any) => props.theme.space[6]};
 `
 
 export const ContainerSmall = (props: any) => {
@@ -70,6 +68,6 @@ export const ContainerGrid = (props: any) => {
 const StyledGridContainer = styled.section`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
+  gap: ${(props: any) => props.theme.space[6]};
   padding: ${(props: any) => props.theme.spaceX[4]};
 `

@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom"
 
 import { AuthContext } from "../context"
 
-export const AuthRoute = (props: any) => {
+export const AuthRoute = (props) => {
   const { component: Component, ...rest } = props
   const authContext = useContext(AuthContext)
   const history = useHistory()
