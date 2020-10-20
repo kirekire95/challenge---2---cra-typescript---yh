@@ -25,7 +25,7 @@ const Home = () => {
   const authContext = useContext(AuthContext)
   console.log("home authContext", authContext)
   const { loading, error, data } = useQuery(GET_USERS, {
-    skip: !authContext.authState.userInfo.username
+    skip: !authContext.authState?.userInfo?.username
   })
 
   if (data) {
