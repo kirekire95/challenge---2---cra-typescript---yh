@@ -13,8 +13,8 @@ const GET_USERS = gql`
 `
 
 const GET_USER = gql`
-  query getUser($getUserUserId: ID!) {
-    getUser(userId: $getUserUserId) {
+  query getUser($userId: ID!) {
+    getUser(userId: $userId) {
       _id
       username
       email
@@ -25,8 +25,8 @@ const GET_USER = gql`
 `
 
 const LOGIN_USER = gql`
-  mutation loginUser($loginUserPassword: String!, $loginUserUsername: String!) {
-    loginUser(password: $loginUserPassword, username: $loginUserUsername) {
+  mutation loginUser($password: String!, $username: String!) {
+    loginUser(password: $password, username: $username) {
       userInfo {
         _id
         username
@@ -43,16 +43,16 @@ const LOGIN_USER = gql`
 
 const REGISTER_USER = gql`
   mutation AddUserMutation(
-    $addUserConfirmPassword: String!
-    $addUserEmail: String!
-    $addUserPassword: String!
-    $addUserUsername: String!
+    $confirmPassword: String!
+    $email: String!
+    $password: String!
+    $username: String!
   ) {
     addUser(
-      confirmPassword: $addUserConfirmPassword
-      email: $addUserEmail
-      password: $addUserPassword
-      username: $addUserUsername
+      confirmPassword: $confirmPassword
+      email: $email
+      password: $password
+      username: $username
     ) {
       userInfo {
         _id
@@ -72,18 +72,18 @@ const REGISTER_USER = gql`
 
 const EDIT_USER = gql`
   mutation EditUserMutation(
-    $editUserUserId: ID!
-    $editUserUsername: String
-    $editUserPassword: String
-    $editUserEmail: String
-    $editUserConfirmPassword: String
+    $userId: ID!
+    $username: String
+    $password: String
+    $email: String
+    $confirmPassword: String
   ) {
     editUser(
-      userId: $editUserUserId
-      username: $editUserUsername
-      password: $editUserPassword
-      email: $editUserEmail
-      confirmPassword: $editUserConfirmPassword
+      userId: $userId
+      username: $username
+      password: $password
+      email: $email
+      confirmPassword: $confirmPassword
     ) {
       _id
       username
@@ -95,8 +95,8 @@ const EDIT_USER = gql`
 `
 
 const DELETE_USER = gql`
-  mutation deleteUser($deleteUserUserId: ID!) {
-    deleteUser(userId: $deleteUserUserId) {
+  mutation deleteUser($userId: ID!) {
+    deleteUser(userId: $userId) {
       _id
       username
       password

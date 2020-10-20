@@ -8,7 +8,7 @@ export const UserCard = (props: any) => {
       <h3>{data.username}</h3>
       <h3>{data.email}</h3>
       <p>{data.createdAt}</p>
-      <p>{data.id}</p>
+      <p>{data._id}</p>
     </div>
   )
 }

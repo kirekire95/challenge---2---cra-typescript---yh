@@ -7,11 +7,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useMutation } from "@apollo/client"
 
 import { AuthContext } from "../context"
-// displayNotification
-import { Button } from "../components/UI Components"
+
+import {
+  Button,
+  ContainerSmall,
+  Form,
+  RelativeIconContainer,
+  ErrorContainer
+} from "../components/UI Components"
 import { useForm } from "../utilities"
 import { LOGIN_USER } from "../queries"
 import Layout from "../components/Layout/Layout"
+import { Styled } from "theme-ui"
 
 const Login = (props: any) => {
   const authContext = useContext(AuthContext)
@@ -58,9 +65,9 @@ const Login = (props: any) => {
 
   return (
     <Layout>
-      <StyledContainer>
-        <h1>Login</h1>
-        <StyledForm onSubmit={handleSubmit} noValidate>
+      <ContainerSmall>
+        <Styled.h1>Login</Styled.h1>
+        <Form onSubmit={handleSubmit} noValidate>
           <div className="form-group">
             <RelativeIconContainer>
               <input
@@ -99,67 +106,20 @@ const Login = (props: any) => {
           <Button full="full" type="submit">
             {loading ? "Logging in..." : "Login"}
           </Button>
-        </StyledForm>
-        {/* {displayNotification(errors, isSuccess, "Success")} */}
-      </StyledContainer>
+          {Object.keys(errors).length > 0 && (
+            <ErrorContainer>
+              <ul>
+                {Object.values(errors).map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </ErrorContainer>
+          )}
+        </Form>
+      </ContainerSmall>
     </Layout>
   )
 }
-
-const StyledContainer = styled.section`
-  min-height: inherit;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 80%;
-  max-width: 450px;
-  margin: auto;
-`
-
-const StyledForm = styled.form`
-  width: 100%;
-  padding: 20px 0;
-  .form-group input {
-    font-size: inherit;
-    width: 100%;
-    min-width: 100%;
-    max-width: 100%;
-    border: 3px solid transparent;
-    border-radius: var(--borderRadius-1);
-    background-color: ${(props: any) => props.theme.colors.background};
-    color: ${(props: any) => props.theme.colors.text};
-    outline: 0;
-    line-height: 3rem;
-    padding: 0 45px 0 10px;
-    box-shadow: var(--boxShadow-Even);
-    -webkit-appearance: none;
-    transition: all 0.2s ease;
-  }
-  .form-group .invalid {
-    border-bottom: 3px solid #ff7730 !important;
-  }
-  .form-group input:valid {
-    border-bottom: 3px solid #55c57a;
-  }
-  .form-group input:focus:invalid {
-    border-bottom: 3px solid #ff7730;
-  }
-  .form-group input::placeholder {
-    color: ${(props: any) => props.theme.colors.placeholder};
-  }
-  .form-group,
-  button {
-    margin-top: 15px;
-  }
-`
-
-const RelativeIconContainer = styled.div`
-  position: relative;
-  .SVGIcon {
-    width: 1.5rem;
-  }
-`
 
 const StyledSVGIcon = styled(FontAwesomeIcon)`
   position: absolute;

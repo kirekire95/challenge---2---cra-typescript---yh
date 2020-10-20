@@ -25,7 +25,7 @@ const Home = () => {
   const authContext = useContext(AuthContext)
   console.log("home authContext", authContext)
   const { loading, error, data } = useQuery(GET_USERS, {
-    skip: !authContext.authState?.userInfo?.username
+    skip: !authContext.authState.userInfo.username
   })
 
   if (data) {
@@ -60,14 +60,13 @@ const Home = () => {
               <h2>There is nothing to see here...</h2>
             ) : (
               data.getUsers.map((item) => (
-                <UserCard key={item.id} userData={item} />
+                <UserCard key={item._id} userData={item} />
               ))
             )}
           </ContainerGrid>
         </React.Fragment>
       )
-      // FIXME: !authContext.authState?.userInfo?.username
-    } else if (1 + 1 === 3) {
+    } else if (!authContext.authState.userInfo.username) {
       return (
         <ContainerFlex>
           <div>

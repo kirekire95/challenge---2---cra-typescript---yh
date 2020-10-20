@@ -5,8 +5,12 @@ import React from "react"
 import styled from "@emotion/styled"
 
 export const ErrorContainer = (props: any) => {
-  const { className } = props
-  return <StyledErrorContainer {...props} className={`${className}`} />
+  const { className, children } = props
+  return (
+    <StyledErrorContainer {...props} className={`${className}`}>
+      {children}
+    </StyledErrorContainer>
+  )
 }
 
 const StyledErrorContainer = styled.div`
@@ -42,8 +46,8 @@ const StyledSuccessContainer = styled.div`
 
 export function displayNotification(
   errors: any,
-  isSuccess: any,
-  successMessage: string
+  isError: any = false,
+  successMessage: string = "Success!"
 ) {
   if (Object.keys(errors).length > 0) {
     return (
@@ -55,7 +59,7 @@ export function displayNotification(
         </ul>
       </ErrorContainer>
     )
-  } else if (Object.keys(errors).length === 0 && isSuccess === true) {
+  } else if (Object.keys(errors).length === 0 && isError === false) {
     return (
       <SuccessContainer>
         <ul>

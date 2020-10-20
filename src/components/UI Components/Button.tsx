@@ -16,7 +16,7 @@ export const Button = ({ variant = "primary", ...props }) => {
         borderRadius: (theme) => `${theme.radii[1]}`,
         cursor: "pointer",
         textDecoration: "none",
-        backgroundColor: "accentColor",
+        backgroundColor: "secondary",
         color: "textColor",
         padding: "0 20px",
         outline: "0",

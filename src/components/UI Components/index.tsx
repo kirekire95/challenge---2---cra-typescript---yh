@@ -16,6 +16,8 @@ import {
   displayNotification
 } from "./ErrorState"
 import { Button } from "./Button"
+import { Form } from "./Form"
+import { RelativeIconContainer } from "./RelativeIconContainer"
 
 export {
   Nav,
@@ -34,5 +36,7 @@ export {
   ErrorContainer,
   SuccessContainer,
   displayNotification,
-  Button
+  Button,
+  Form,
+  RelativeIconContainer
 }

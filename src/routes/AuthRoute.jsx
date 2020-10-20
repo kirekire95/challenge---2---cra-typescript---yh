@@ -11,7 +11,7 @@ export const AuthRoute = (props) => {
   const authContext = useContext(AuthContext)
   const history = useHistory()
 
-  if (authContext.authState?.userInfo?.username) {
+  if (authContext.authState.userInfo.username) {
     history.push("/")
   } else {
     return <Component {...rest} />
