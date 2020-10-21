@@ -15,7 +15,8 @@ import {
   faUser,
   faExclamationTriangle,
   faLock,
-  faEnvelope
+  faEnvelope,
+  faImage
 } from "@fortawesome/free-solid-svg-icons"
 
 import {
@@ -38,10 +39,11 @@ library.add(
   faUser,
   faExclamationTriangle,
   faLock,
-  faEnvelope
+  faEnvelope,
+  faImage
 )
 
-const Layout: React.FC = ({ children }) => {
+export const Layout: React.FC = ({ children }) => {
   return (
     <StyledThemeProvider theme={theme}>
       <Styled.root>
@@ -53,5 +55,3 @@ const Layout: React.FC = ({ children }) => {
     </StyledThemeProvider>
   )
 }
-
-export default Layout
