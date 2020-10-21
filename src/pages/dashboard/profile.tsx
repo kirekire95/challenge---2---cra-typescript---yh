@@ -13,7 +13,7 @@ import { Styled } from "theme-ui"
 import { Layout } from "../../components/Layout/Layout"
 import { Container } from "../../components/UI Components"
 import { AuthContext } from "../../context"
-import { EditUser } from "../../components/Profile"
+import { EditUser, CreateUser } from "../../components/Profile"
 
 const ProfilePage = () => {
   const authContext = useContext<any>(AuthContext)
@@ -30,7 +30,8 @@ const ProfilePage = () => {
           <p>{authContext.authState?.userInfo.createdAt}</p>
           <p>{authContext.authState?.userInfo._id}</p>
         </div>
-        <EditUser />
+        {/* <EditUser /> */}
+        <CreateUser />
       </Container>
     </Layout>
   )

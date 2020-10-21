@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Button, RelativeIconContainer } from "../UI Components"
 import { ModalComponent } from "../../utilities"
 import { UploadImageContainer } from "./UploadImageContainer"
+import { UPLOAD_FILE } from "../../queries"
 
 export const UploadPicture = (props) => {
   const [previewSource, setPreviewSource] = useState()
@@ -17,7 +18,9 @@ export const UploadPicture = (props) => {
 
   console.log("UPLOAD PROPS", props)
 
-  // const [mutate, { isLoading }] = useMutation(handleSubmitFile)
+  const [uploadFile, { loading }] = useMutation(UPLOAD_FILE, {
+    onCompleted: (data) => console.log("UPLOAD_FILE onComplete data", data)
+  })
 
   const handleFileInputChange = (event) => {
     if (!modalOpen && event.target.value.length !== 0) {
@@ -53,13 +56,18 @@ export const UploadPicture = (props) => {
     event.preventDefault()
     try {
       setModalOpen(false)
+      uploadFile({
+        variables: {
+          file
+        }
+      })
     } catch (error) {
       console.error(error)
     }
   }
 
   function displayThumbnail() {
-    if (file) {
+    if (!file) {
       return <UploadImageContainer />
     } else if (previewSource) {
       return (
@@ -82,7 +90,7 @@ export const UploadPicture = (props) => {
               disabled={!setPreviewSource}
               onClick={handleSubmitFile}
             >
-              {1 + 1 === 3 ? "Laddar upp bild..." : "Ladda upp bild"}
+              {loading ? "Laddar upp bild..." : "Ladda upp bild"}
             </Button>
             <Button
               full="true"
