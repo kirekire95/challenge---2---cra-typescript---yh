@@ -61,12 +61,18 @@ const Navbar = () => {
               <NavLink
                 activeClassName="active"
                 to={`/dashboard/profile/${authContext.authState?.userInfo?.username}`}
+                exact
               >
                 {authContext.authState?.userInfo?.username}
               </NavLink>
             </li>
             <li>
-              <NavLink activeClassName="active" to="/" onClick={logoutHandler}>
+              <NavLink
+                activeClassName="active"
+                to="/"
+                exact
+                onClick={logoutHandler}
+              >
                 Logout
               </NavLink>
             </li>
@@ -89,7 +95,7 @@ const Navbar = () => {
             {ProfileLinks.map((link) => {
               return (
                 <li key={link.id}>
-                  <NavLink activeClassName="active" to={link.path}>
+                  <NavLink activeClassName="active" to={link.path} exact>
                     {link.text}
                   </NavLink>
                 </li>
@@ -121,7 +127,7 @@ const Navbar = () => {
                 {NavigationLinks.map((link) => {
                   return (
                     <li key={link.id}>
-                      <NavLink exact activeClassName="active" to={link.path}>
+                      <NavLink activeClassName="active" to={link.path} exact>
                         {link.text}
                       </NavLink>
                     </li>
@@ -136,7 +142,7 @@ const Navbar = () => {
         {NavigationLinks.map((link) => {
           return (
             <li key={link.id}>
-              <NavLink exact activeClassName="active" to={link.path}>
+              <NavLink activeClassName="active" to={link.path} exact>
                 {link.text}
               </NavLink>
             </li>
