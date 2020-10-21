@@ -4,7 +4,7 @@ import Modal from "react-modal"
 export const ModalComponent = (props: any) => {
   const { children, className } = props
 
-  Modal.setAppElement("#__next")
+  Modal.setAppElement("#root")
 
   const customStyles = {
     overlay: {
