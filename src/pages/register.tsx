@@ -18,6 +18,7 @@ import {
 import { REGISTER_USER } from "../queries"
 import Layout from "../components/Layout/Layout"
 import { Styled } from "theme-ui"
+import { useHistory } from "react-router"
 
 const Register = (props: any) => {
   const authContext = useContext(AuthContext)
@@ -29,6 +30,8 @@ const Register = (props: any) => {
     email: "",
     isAdmin: false
   })
+
+  const history = useHistory()
 
   console.log("values", values)
 
@@ -53,7 +56,9 @@ const Register = (props: any) => {
     update(_, result) {
       console.log("update result register", result)
       authContext.setAuthState(result.data.addUser)
-      props.navigate("/dashboard/")
+      history.push(
+        `/dashboard/profile/${result.data.addUser.userInfo.username}`
+      )
     },
     onCompleted: () => {
       setErrors({})

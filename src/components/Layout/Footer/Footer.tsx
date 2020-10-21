@@ -1,9 +1,14 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui"
+import { FunctionComponent } from "react"
+import { jsx, SxStyleProp } from "theme-ui"
 
 import { SocialIcons } from "../../../constants"
 
-const Footer = () => {
+interface customSXProps {
+  sx?: SxStyleProp
+}
+
+const Footer: FunctionComponent<customSXProps> = () => {
   return (
     <footer
       sx={{
@@ -24,7 +29,7 @@ const Footer = () => {
           alignItems: "center",
           listStyle: "none",
           minHeight: "var(--footer-height)",
-          padding: "0",
+          padding: "0"
         }}
       >
         {SocialIcons.map((item, index) => {
@@ -38,8 +43,8 @@ const Footer = () => {
                   margin: "0 30px",
                   transition: "var(--transitionPrimary)",
                   "&:hover": {
-                    color: "#ccc",
-                  },
+                    color: "#ccc"
+                  }
                 }}
                 href={item.url}
                 target="_blank"
@@ -54,7 +59,7 @@ const Footer = () => {
       <p
         sx={{
           textAlign: "center",
-          fontSize: "inherit",
+          fontSize: "inherit"
         }}
       >
         Copyright &copy; Erik Claesson {new Date().getFullYear()}
