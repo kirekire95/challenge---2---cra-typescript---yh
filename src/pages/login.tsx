@@ -19,10 +19,12 @@ import { useForm } from "../utilities"
 import { LOGIN_USER } from "../queries"
 import Layout from "../components/Layout/Layout"
 import { Styled } from "theme-ui"
+import { useHistory } from "react-router"
 
 const Login = (props: any) => {
   const authContext = useContext(AuthContext)
   const [errors, setErrors] = useState({})
+  const history = useHistory()
 
   const { handleChange, handleSubmit, values } = useForm(loginUserCallback, {
     username: "",
@@ -48,9 +50,12 @@ const Login = (props: any) => {
       console.log("err.graphQLErrors[0]", err.graphQLErrors[0])
     },
     update(_, result) {
+      /* Memory leak happens here maybe? */
       console.log("update result login", result)
       authContext.setAuthState(result.data.loginUser)
-      props.navigate("/dashboard")
+      history.push(
+        `/dashboard/profile/${result.data.loginUser.userInfo.username}`
+      )
     },
     onCompleted: () => {
       setErrors({})
