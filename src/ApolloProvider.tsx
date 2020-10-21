@@ -1,15 +1,11 @@
 import React from "react"
-import {
-  ApolloProvider,
-  ApolloClient,
-  HttpLink,
-  InMemoryCache
-} from "@apollo/client"
+import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client"
 import { setContext } from "@apollo/client/link/context"
+import { createUploadLink } from "apollo-upload-client"
 
 import App from "./App"
 
-const httpLink = new HttpLink({
+const httpLink = createUploadLink({
   uri: "https://reactsecurity---backend.herokuapp.com/api/graphql"
 })
 

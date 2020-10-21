@@ -200,14 +200,12 @@ const DELETE_POST = gql`
   }
 `
 
-// File Upload, not implemented - yet
+// File Upload
 
 const UPLOAD_FILE = gql`
   mutation uploadFile($file: Upload!) {
     uploadFile(file: $file) {
-      filename
-      mimetype
-      encoding
+      url
     }
   }
 `
