@@ -66,7 +66,7 @@ const Home = () => {
           </ContainerGrid>
         </React.Fragment>
       )
-    } else if (!authContext.authState.userInfo.username) {
+    } else if (!authContext.authState?.userInfo?.username) {
       return (
         <ContainerFlex>
           <div>
