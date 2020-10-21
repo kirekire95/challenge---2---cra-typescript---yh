@@ -1,16 +1,9 @@
 /** @jsx jsx */
-import { DetailedHTMLProps, FunctionComponent, HTMLAttributes } from "react"
-import { jsx, SxStyleProp } from "theme-ui"
+import { jsx } from "theme-ui"
 
 import { SocialIcons } from "../../../constants"
 
-interface customSXProps
-  extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
-  sx?: SxStyleProp
-}
-
-const Footer: FunctionComponent<customSXProps> = (props) => {
-  const { sx } = props
+const Footer = () => {
   return (
     <footer
       sx={{
@@ -21,8 +14,7 @@ const Footer: FunctionComponent<customSXProps> = (props) => {
         alignItems: "center",
         backgroundColor: "background",
         padding: [4],
-        boxShadow: [2],
-        ...sx
+        boxShadow: [2]
       }}
     >
       <ul
