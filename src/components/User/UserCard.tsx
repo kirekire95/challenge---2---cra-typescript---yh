@@ -2,7 +2,7 @@ import React from "react"
 
 export const UserCard = (props: any) => {
   const { userData: data } = props
-  console.log("SserCard Data", data)
+  console.log("UserCard Data", data)
   return (
     <div>
       <h3>{data.username}</h3>

@@ -19,10 +19,16 @@ const ProfilePage = () => {
   return (
     <Layout>
       <Container>
-        <h1>Hi from ProfilePage</h1>
+        <Styled.h1>Hi from ProfilePage</Styled.h1>
         <Styled.h3>
           Welcome {authContext.authState?.userInfo?.username}!
         </Styled.h3>
+        <div>
+          <h3>{authContext.authState?.userInfo.username}</h3>
+          <h3>{authContext.authState?.userInfo.email}</h3>
+          <p>{authContext.authState?.userInfo.createdAt}</p>
+          <p>{authContext.authState?.userInfo._id}</p>
+        </div>
       </Container>
     </Layout>
   )

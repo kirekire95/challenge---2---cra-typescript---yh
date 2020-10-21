@@ -19,6 +19,7 @@ import {
 import { Button } from "./Button"
 import { Form } from "./Form"
 import { RelativeIconContainer } from "./RelativeIconContainer"
+import { CameraIcon, DocumentTextIcon, FileUploadIcon } from "./HeroIcons"
 
 export {
   Nav,
@@ -40,5 +41,8 @@ export {
   displayNotification,
   Button,
   Form,
-  RelativeIconContainer
+  RelativeIconContainer,
+  CameraIcon,
+  DocumentTextIcon,
+  FileUploadIcon
 }
