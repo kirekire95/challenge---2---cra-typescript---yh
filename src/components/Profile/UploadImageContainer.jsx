@@ -1,6 +1,7 @@
+import React from "react"
 import styled from "@emotion/styled"
 
-import { CameraIcon } from "../UIComponents"
+import { CameraIcon } from "../UI Components"
 
 export const UploadImageContainer = () => {
   return (
