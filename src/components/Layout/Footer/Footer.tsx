@@ -8,7 +8,8 @@ interface customSXProps {
   sx?: SxStyleProp
 }
 
-const Footer: FunctionComponent<customSXProps> = () => {
+const Footer: FunctionComponent<customSXProps> = (props) => {
+  const { sx } = props
   return (
     <footer
       sx={{
@@ -19,7 +20,8 @@ const Footer: FunctionComponent<customSXProps> = () => {
         alignItems: "center",
         backgroundColor: "background",
         padding: [4],
-        boxShadow: [2]
+        boxShadow: [2],
+        ...sx
       }}
     >
       <ul
