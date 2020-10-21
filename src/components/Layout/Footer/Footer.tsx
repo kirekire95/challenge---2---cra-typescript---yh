@@ -1,10 +1,11 @@
 /** @jsx jsx */
-import { FunctionComponent } from "react"
+import { DetailedHTMLProps, FunctionComponent, HTMLAttributes } from "react"
 import { jsx, SxStyleProp } from "theme-ui"
 
 import { SocialIcons } from "../../../constants"
 
-interface customSXProps {
+interface customSXProps
+  extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
   sx?: SxStyleProp
 }
 
