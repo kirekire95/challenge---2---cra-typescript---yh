@@ -8,7 +8,7 @@ import { AuthContext } from "../context"
 
 // Fix this component, it errors on login
 
-export const AuthRoute = (props) => {
+export const AuthRoute = (props: any) => {
   const { component: Component, ...rest } = props
   const authContext = useContext(AuthContext)
 

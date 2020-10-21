@@ -22,7 +22,7 @@ import Layout from "../components/Layout/Layout"
 import { UserCard } from "../components/User"
 
 const Home = () => {
-  const authContext = useContext(AuthContext)
+  const authContext = useContext<any>(AuthContext)
   console.log("home authContext", authContext)
   const { loading, error, data } = useQuery(GET_USERS, {
     skip: !authContext.authState?.userInfo?.username

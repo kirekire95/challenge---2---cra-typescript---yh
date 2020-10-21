@@ -20,7 +20,7 @@ const Navbar = () => {
   const [profileOpen, setProfileOpen] = useState(false)
   const [colorMode, setColorMode] = useColorMode()
 
-  const authContext = useContext(AuthContext)
+  const authContext = useContext<any>(AuthContext)
 
   const modes = ["light", "dark", "colorful"]
 
