@@ -20,7 +20,7 @@
 
 ### Todo
 
-- Create Apollo Server Node.js + MongoDB Backend with JWT Authentication
+- Add Image Upload in backend + drag and drop functionality in frontend?
 
 ### Learnings
 
