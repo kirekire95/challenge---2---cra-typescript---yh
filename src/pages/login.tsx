@@ -10,10 +10,10 @@ import { AuthContext } from "../context"
 
 import {
   Button,
-  ContainerSmall,
   Form,
   RelativeIconContainer,
-  ErrorContainer
+  ErrorContainer,
+  ContainerFlexMedium
 } from "../components/UI Components"
 import { useForm } from "../utilities"
 import { LOGIN_USER } from "../queries"
@@ -70,7 +70,7 @@ const Login = (props: any) => {
 
   return (
     <Layout>
-      <ContainerSmall>
+      <ContainerFlexMedium>
         <Styled.h1>Login</Styled.h1>
         <Form onSubmit={handleSubmit} noValidate>
           <div className="form-group">
@@ -121,7 +121,7 @@ const Login = (props: any) => {
             </ErrorContainer>
           )}
         </Form>
-      </ContainerSmall>
+      </ContainerFlexMedium>
     </Layout>
   )
 }

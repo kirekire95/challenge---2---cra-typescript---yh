@@ -7,10 +7,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useMutation } from "@apollo/client"
 
 import { AuthContext } from "../context"
-// displayNotification
+
 import {
   Button,
-  ContainerSmall,
+  ContainerFlexMedium,
   ErrorContainer,
   Form,
   RelativeIconContainer
@@ -67,7 +67,7 @@ const Register = (props: any) => {
 
   return (
     <Layout>
-      <ContainerSmall>
+      <ContainerFlexMedium>
         <Styled.h1>Register</Styled.h1>
         <Form onSubmit={handleSubmit} noValidate>
           <div className="form-group">
@@ -156,7 +156,7 @@ const Register = (props: any) => {
             </ul>
           </ErrorContainer>
         )}
-      </ContainerSmall>
+      </ContainerFlexMedium>
     </Layout>
   )
 }

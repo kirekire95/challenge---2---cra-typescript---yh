@@ -56,6 +56,26 @@ const StyledContainerFlex = styled.div`
   margin: auto;
 `
 
+export const ContainerFlexMedium = (props: any) => {
+  const { className, children } = props
+  return (
+    <StyledContainerFlexMedium {...props} className={`${className}`}>
+      {children}
+    </StyledContainerFlexMedium>
+  )
+}
+
+const StyledContainerFlexMedium = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: inherit;
+  width: ${(props: any) => props.theme.sizes.percent[1]};
+  max-width: 450px;
+  margin: auto;
+`
+
 export const ContainerGrid = (props: any) => {
   const { className, children } = props
   return (

@@ -5,6 +5,7 @@ import {
   Container,
   ContainerSmall,
   ContainerFlex,
+  ContainerFlexMedium,
   ContainerGrid
 } from "./Container"
 import { SVGIcon } from "./SVGIcon"
@@ -29,6 +30,7 @@ export {
   Container,
   ContainerSmall,
   ContainerFlex,
+  ContainerFlexMedium,
   ContainerGrid,
   SVGIcon,
   Error,
