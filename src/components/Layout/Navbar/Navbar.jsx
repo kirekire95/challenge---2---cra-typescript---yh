@@ -60,9 +60,9 @@ const Navbar = () => {
             <li>
               <NavLink
                 activeClassName="active"
-                to={`/dashboard/profile/${authContext?.authState?.userInfo?.username}}`}
+                to={`/dashboard/profile/${authContext.authState?.userInfo?.username}`}
               >
-                Username
+                {authContext.authState?.userInfo?.username}
               </NavLink>
             </li>
             <li>
