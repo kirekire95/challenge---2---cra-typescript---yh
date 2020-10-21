@@ -2,7 +2,7 @@
 // @ts-nocheck
 
 import React, { useContext } from "react"
-import { useHistory } from "react-router-dom"
+import { Redirect } from "react-router-dom"
 
 import { AuthContext } from "../context"
 
@@ -11,11 +11,12 @@ import { AuthContext } from "../context"
 export const AuthRoute = (props) => {
   const { component: Component, ...rest } = props
   const authContext = useContext(AuthContext)
-  const history = useHistory()
+
+  console.log("AUTHROUTE NAME", authContext.authState?.userInfo?.username)
 
   if (authContext.authState?.userInfo?.username) {
-    history.push("/")
-  } else {
     return <Component {...rest} />
+  } else {
+    return <Redirect to="/" />
   }
 }

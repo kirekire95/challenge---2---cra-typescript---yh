@@ -1,12 +1,12 @@
 export const ProfileLinks = [
   {
     id: 1,
-    path: "/dashboard/login",
+    path: "/login",
     text: "Login"
   },
   {
     id: 2,
-    path: "/dashboard/register",
+    path: "/register",
     text: "Register"
   }
 ]

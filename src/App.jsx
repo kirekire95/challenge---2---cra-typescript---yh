@@ -21,10 +21,10 @@ const App = () => {
           }
         >
           <Switch>
+            <AuthRoute path="/dashboard/profile/:user" component={Profile} />
             <PublicRoute exact path="/" component={Home} />
-            <AuthRoute exact path="/dashboard/login" component={Login} />
-            <AuthRoute exact path="/dashboard/register" component={Register} />
-            <AuthRoute exact path="/profile/:user" component={Profile} />
+            <PublicRoute exact path="/login" component={Login} />
+            <PublicRoute exact path="/register" component={Register} />
             <PublicRoute default component={NotFoundPage} />
           </Switch>
         </Suspense>
