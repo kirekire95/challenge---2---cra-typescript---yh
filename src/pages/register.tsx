@@ -56,9 +56,11 @@ const Register = (props: any) => {
     update(_, result) {
       console.log("update result register", result)
       authContext.setAuthState(result.data.addUser)
-      history.push(
-        `/dashboard/profile/${result.data.addUser.userInfo.username}`
-      )
+      setTimeout(() => {
+        history.push(
+          `/dashboard/profile/${result.data.addUser.userInfo.username}`
+        )
+      }, 0)
     },
     onCompleted: () => {
       setErrors({})

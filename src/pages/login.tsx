@@ -53,9 +53,12 @@ const Login = (props: any) => {
       /* Memory leak happens here maybe? */
       console.log("update result login", result)
       authContext.setAuthState(result.data.loginUser)
-      history.push(
-        `/dashboard/profile/${result.data.loginUser.userInfo.username}`
-      )
+      // setTimeout prevents memory leak which I saw in reactsecurity, not sure if there is a better way to determine what causes it and how to prevent it in a different way though.
+      setTimeout(() => {
+        history.push(
+          `/dashboard/profile/${result.data.loginUser.userInfo.username}`
+        )
+      }, 0)
     },
     onCompleted: () => {
       setErrors({})
