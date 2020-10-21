@@ -21,6 +21,7 @@ const StyledErrorContainer = styled.div`
   border-radius: ${(props: any) => props.theme.radii[1]};
   background-color: #fff6f6;
   padding: 10px 0;
+  margin-top: 1rem;
   ul {
     padding: ${(props: any) => props.theme.spaceY[8]};
   }
@@ -39,6 +40,7 @@ const StyledSuccessContainer = styled.div`
   border-radius: ${(props: any) => props.theme.radii[1]};
   background-color: hsl(141, 53%, 53%);
   padding: 10px 0;
+  margin-top: 1rem;
   ul {
     padding: ${(props: any) => props.theme.spaceY[8]};
   }

@@ -6,7 +6,7 @@ export const paletteLight = {
   ...tailwind.colors,
   textColor: tailwind.colors.gray[9],
   backgroundColor: "hsl(0, 0%, 100%)",
-  primaryColor: "#efb6b2",
+  primaryColor: tailwind.colors.gray[1],
   secondaryColor: "#4e4e4e",
   thirdColor: "hsla(220, 0%, 80%, 1)",
   accentColor: tailwind.colors.orange[7],
@@ -15,6 +15,7 @@ export const paletteLight = {
   activeLinkColor: "slateblue",
   placeholderColor: "rgb(106, 106, 106)",
   navbarColor: "hsla(210, 20%, 98%, 1)",
+  navbarMenuColor: "hsla(210, 20%, 98%, 0.85)",
   errorColor: "#ff4a4a"
 }
 
@@ -31,6 +32,7 @@ export const paletteDark = {
   activeLinkColor: "slateblue",
   placeholderColor: "rgb(160, 174, 192)",
   navbarColor: "hsla(210, 20%, 98%, 1)",
+  navbarMenuColor: "hsla(210, 20%, 98%, 0.85)",
   errorColor: "#ff4a4a"
 }
 
@@ -46,6 +48,7 @@ export const paletteColorful = {
   activeLinkColor: "slateblue",
   placeholderColor: "hsl(350, 100%, 88%)",
   navbarColor: "hsla(210, 20%, 98%, 1)",
+  navbarMenuColor: "hsla(210, 20%, 98%, 0.85)",
   errorColor: "#ff4a4a"
 }
 
@@ -77,6 +80,7 @@ export default {
     activeLink: paletteLight.activeLinkColor,
     boxShadow: paletteLight.placeholderColor,
     navbar: paletteLight.navbarColor,
+    navbarMenu: paletteLight.navbarMenuColor,
     error: paletteLight.errorColor,
     modes: {
       dark: {
@@ -94,6 +98,7 @@ export default {
         activeLink: paletteDark.activeLinkColor,
         boxShadow: paletteDark.placeholderColor,
         navbar: paletteDark.navbarColor,
+        navbarMenu: paletteDark.navbarMenuColor,
         error: paletteDark.errorColor
       },
       colorful: {
@@ -111,6 +116,7 @@ export default {
         activeLink: paletteColorful.activeLinkColor,
         boxShadow: paletteColorful.placeholderColor,
         navbar: paletteColorful.navbarColor,
+        navbarMenu: paletteColorful.navbarMenuColor,
         error: paletteColorful.errorColor
       }
     }

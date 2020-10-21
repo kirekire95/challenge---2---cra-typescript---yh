@@ -1,9 +1,9 @@
-import React from "react";
-import { Global, css } from "@emotion/core";
-import { useThemeUI } from "theme-ui";
+import React from "react"
+import { Global, css } from "@emotion/core"
+import { useThemeUI } from "theme-ui"
 
 export const GlobalStyle = () => {
-  const themeContext = useThemeUI();
+  const themeContext = useThemeUI()
   return (
     <Global
       styles={css`
@@ -12,7 +12,6 @@ export const GlobalStyle = () => {
           --navbar-checkbox: 60px;
           --footer-height: 60px;
           --highlight-color: slateblue;
-          --transitionPrimary: all 0.2s ease;
         }
 
         * {
@@ -64,5 +63,5 @@ export const GlobalStyle = () => {
         }
       `}
     />
-  );
-};
+  )
+}

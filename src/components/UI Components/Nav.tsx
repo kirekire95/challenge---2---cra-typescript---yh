@@ -126,7 +126,7 @@ export const Nav = styled.nav`
 
   .toggler:checked ~ .menu > div {
     transform: scale(1);
-    transition-duration: var(--menu-speed);
+    transition-duration: 0.3s;
   }
 
   .toggler:checked ~ .menu > div > div {
@@ -150,7 +150,7 @@ export const Nav = styled.nav`
   }
 
   .menuWrap .menu > div {
-    background-color: ${(props: any) => props.theme.colors.muted};
+    background-color: ${(props: any) => props.theme.colors.navbarMenu};
     border-radius: 50%;
     width: 200vw;
     height: 200vh;

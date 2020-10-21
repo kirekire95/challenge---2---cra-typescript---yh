@@ -16,7 +16,7 @@ export const Button = ({ variant = "primary", ...props }) => {
         borderRadius: (theme) => `${theme.radii[1]}`,
         cursor: "pointer",
         textDecoration: "none",
-        backgroundColor: "secondary",
+        backgroundColor: "primary",
         color: "textColor",
         padding: "0 20px",
         outline: "0",
@@ -26,12 +26,12 @@ export const Button = ({ variant = "primary", ...props }) => {
         "&:active": {
           transform: "translateY(3px)"
         },
-        "&:hover": {
-          boxShadow: "0 0 0 3px rgba(255, 255, 255, 0.5)"
-        },
-        "&:focus": {
-          boxShadow: "0 0 0 3px rgba(255, 255, 255, 1)"
-        },
+        // "&:hover": {
+        //   boxShadow: "0 0 0 3px rgba(255, 255, 255, 0.5)"
+        // },
+        // "&:focus": {
+        //   boxShadow: "0 0 0 3px rgba(255, 255, 255, 1)"
+        // },
         variant: `buttons.${variant}`
       }}
     />
