@@ -12,7 +12,7 @@ export const AuthRoute = (props) => {
   const { component: Component, ...rest } = props
   const authContext = useContext(AuthContext)
 
-  console.log("AUTHROUTE NAME", authContext.authState?.userInfo?.username)
+  console.log("AUTHROUTE USERNAME", authContext.authState?.userInfo?.username)
 
   if (authContext.authState?.userInfo?.username) {
     return <Component {...rest} />

@@ -69,5 +69,6 @@ const StyledGridContainer = styled.section`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: ${(props: any) => props.theme.space[6]};
+  justify-items: center;
   padding: ${(props: any) => props.theme.spaceX[4]};
 `
