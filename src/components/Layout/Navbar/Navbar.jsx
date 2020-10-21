@@ -66,11 +66,7 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink
-                activeClassName="active"
-                to={authContext.authState?.userInfo?.email}
-                onClick={logoutHandler}
-              >
+              <NavLink activeClassName="active" to="/" onClick={logoutHandler}>
                 Logout
               </NavLink>
             </li>
