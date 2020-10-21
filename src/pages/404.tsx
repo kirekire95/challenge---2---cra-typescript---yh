@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 
 import { ContainerFlex } from "../components/UI Components"
-import Layout from "../components/Layout/Layout"
+import { Layout } from "../components/Layout/Layout"
 
 const NotFoundPage = () => (
   <Layout>

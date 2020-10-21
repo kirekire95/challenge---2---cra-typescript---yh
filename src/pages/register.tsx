@@ -16,7 +16,7 @@ import {
   RelativeIconContainer
 } from "../components/UI Components"
 import { REGISTER_USER } from "../queries"
-import Layout from "../components/Layout/Layout"
+import { Layout } from "../components/Layout/Layout"
 import { Styled } from "theme-ui"
 import { useHistory } from "react-router"
 

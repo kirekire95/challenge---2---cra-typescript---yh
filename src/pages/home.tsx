@@ -18,7 +18,7 @@ import {
   ContainerFlex,
   ContainerGrid
 } from "../components/UI Components"
-import Layout from "../components/Layout/Layout"
+import { Layout } from "../components/Layout/Layout"
 import { UserCard } from "../components/User"
 
 const Home = () => {

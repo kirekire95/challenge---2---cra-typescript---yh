@@ -2,7 +2,7 @@ import React, { Suspense } from "react"
 import { BrowserRouter as Router, Switch } from "react-router-dom"
 
 import { AuthProvider } from "./context"
-import Layout from "./components/Layout/Layout"
+import { Layout } from "./components/Layout/Layout"
 import { Loading, ContainerFlex } from "./components/UI Components"
 import { Home, NotFoundPage, Login, Register, ProfilePage } from "./pages"
 import { AuthRoute, PublicRoute } from "./routes"
