@@ -1,37 +1,51 @@
-import { useRef, useState } from "react"
+import React, { useContext, useState } from "react"
 import styled from "@emotion/styled"
 import { Styled } from "theme-ui"
-import { queryCache, useMutation } from "react-query"
+import { useMutation } from "@apollo/client"
 
+import { EDIT_USER } from "../../queries"
 import { useForm } from "../../utilities"
-import { Button, DocumentTextIcon, displayNotification } from "../UIComponents"
-import { Dropzone } from "."
+import { Button, DocumentTextIcon, ErrorContainer } from "../UI Components"
+import { UploadPicture } from "./UploadPicture"
+import { AuthContext } from "../../context"
 
-export const AnnonsAddForm = () => {
+export const EditUser = () => {
   const [errors, setErrors] = useState({})
   const [pictureValue, setPictureValue] = useState([])
   const [uploadedImages, setUploadedImages] = useState([])
-  const myForm = useRef(null)
+  const authContext = useContext(AuthContext)
 
-  const [
-    mutate,
-    { data, isLoading, isError, isSuccess, status, error }
-  ] = useMutation(postPicture, {
-    onSuccess: () => {
-      queryCache.invalidateQueries("images")
+  const { handleSubmit, handleChange, values } = useForm(createProductCallback)
+
+  console.log("THE THINGS", authContext.authState.userInfo)
+
+  const [mutate, { data, loading, error }] = useMutation(EDIT_USER, {
+    variables: {
+      // ...authContext.authState.userInfo,
+      userId: authContext.authState.userInfo._id,
+      password: authContext.authState.userInfo.pass,
+      email: values.email,
+      username: values.username
     },
-    onError: (err, variables, previousValue) => {
-      console.log(err)
-      queryCache.setQueryData("images", previousValue)
+    onSuccess: () => {
+      // queryCache.invalidateQueries("images")
+    },
+    onError: (err) => {
+      if (err.graphQLErrors[0].extensions.error) {
+        setErrors(err.graphQLErrors[0].extensions.exception.error)
+      } else if (err.graphQLErrors[0].extensions.errors) {
+        setErrors(err.graphQLErrors[0].extensions.exception.errors)
+      } else if (err.graphQLErrors[0].extensions.errors) {
+        console.log("Hej", err.graphQLErrors[0].extensions.errors)
+      } else {
+        setErrors(err.graphQLErrors[0].message)
+        console.log("err - Something else happened", err.graphQLErrors[0])
+      }
+      console.log("err.graphQLErrors[0]", err.graphQLErrors[0])
     }
   })
 
-  console.log("QUERY ERRROR", error)
-
-  console.log("MUTATE isError", isError)
-  console.log("MUTATE isSuccess", isSuccess)
-
-  const { handleSubmit, values } = useForm(createProductCallback)
+  console.log("MUTATE ERRROR", error)
 
   function createProductCallback() {
     mutate()
@@ -43,86 +57,39 @@ export const AnnonsAddForm = () => {
     }
   }
 
-  async function postPicture() {
-    try {
-      const formData = new FormData(myForm.current)
-
-      if (pictureValue) {
-        for (let i = 0; i < pictureValue.length; i++) {
-          const oneFile = pictureValue[i]
-
-          formData.append("photos", oneFile, oneFile.name)
-          setUploadedImages([...uploadedImages, oneFile])
-        }
-      }
-
-      // Loop over the formData for debugging purposes
-      for (const pair of formData.entries()) {
-        console.log("Loop formdata", pair[0], pair[1])
-      }
-
-      const url =
-        "http://s000522.intra.lund.se:81/api/plocket/CreateFurnitureAd"
-      const requestOptions = {
-        method: "POST",
-        body: formData
-      }
-
-      const response = await fetch(url, requestOptions)
-
-      const data = await response.json()
-      console.log("AnnonsAddForm API DATA", data)
-
-      if (response.ok) {
-        setErrors({})
-        return data
-      } else if (!response.ok && data.errors) {
-        setErrors(data.errors)
-        console.log("STATE ERRORS", errors)
-      } else if (!response.ok) {
-        console.log("Something else went wrong")
-      }
-    } catch (error) {
-      setErrors(error)
-    }
-  }
-
-  console.log("AnnonsAddForm data", data)
-  console.log("AnnonsAddForm Picture Value", pictureValue)
+  console.log("EditUser data", data)
+  console.log("EditUser Picture Value", pictureValue)
 
   return (
     <React.Fragment>
-      <StyledForm ref={myForm} onSubmit={handleSubmit} noValidate>
-        <Styled.h1>Skapa Annons</Styled.h1>
+      <StyledForm onSubmit={handleSubmit} noValidate>
+        <Styled.h1>Edit User</Styled.h1>
         <RelativeIconContainer>
           <input
             type="text"
-            placeholder="Titel..."
-            name="title"
-            // autoComplete="title-name"
-            // onChange={handleChange}
-            // value={values.title}
-            defaultValue={values.title}
+            placeholder="Username..."
+            name="username"
+            onChange={handleChange}
+            value={values.username}
             required="required"
-            className={errors.title ? "invalid" : null}
+            className={errors.username ? "invalid" : null}
           />
           <DocumentTextIcon className="hero-icon" />
         </RelativeIconContainer>
         <RelativeIconContainer>
           <input
             type="text"
-            placeholder="Kategori..."
-            name="category"
-            // autoComplete="title-name"
-            // onChange={handleChange}
-            // value={values.title}
-            defaultValue={values.category}
+            placeholder="Email..."
+            name="email"
+            onChange={handleChange}
+            value={values.email}
             required="required"
-            className={errors.category ? "invalid" : null}
+            className={errors.email ? "invalid" : null}
           />
           <DocumentTextIcon className="hero-icon" />
         </RelativeIconContainer>
-        <RelativeIconContainer>
+        {/* We can add a bio here in GraphQL and use this later for a bio */}
+        {/* <RelativeIconContainer>
           <textarea
             type="text"
             placeholder="Beskrivning..."
@@ -135,8 +102,8 @@ export const AnnonsAddForm = () => {
             className={errors.description ? "invalid" : null}
           />
           <DocumentTextIcon className="hero-icon" style={{ height: "3rem" }} />
-        </RelativeIconContainer>
-        <Dropzone getPictureValue={getPictureValue} />
+        </RelativeIconContainer> */}
+        <UploadPicture getPictureValue={getPictureValue} />
         <div style={{ display: "grid", gridTemplateColumns: "repeat(1, 1fr)" }}>
           <Button
             tabIndex="0"
@@ -145,11 +112,19 @@ export const AnnonsAddForm = () => {
               justifySelf: "flex-end"
             }}
           >
-            {isLoading ? "Skapar annons..." : "Skapa annons"}
+            {loading ? "Skapar annons..." : "Skapa annons"}
           </Button>
         </div>
       </StyledForm>
-      {displayNotification(errors, isSuccess, "Annonsen har publicerats")}
+      {Object.keys(errors).length > 0 && (
+        <ErrorContainer>
+          <ul>
+            {Object.values(errors).map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </ErrorContainer>
+      )}
     </React.Fragment>
   )
 }
