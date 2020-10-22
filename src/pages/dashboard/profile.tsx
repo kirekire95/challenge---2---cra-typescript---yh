@@ -13,7 +13,8 @@ import { Styled } from "theme-ui"
 import { Layout } from "../../components/Layout/Layout"
 import { Container } from "../../components/UI Components"
 import { AuthContext } from "../../context"
-import { EditUser, CreateUser } from "../../components/Profile"
+import { CreateUser } from "../../components/Profile"
+// import { EditUser } from "../../components/Profile"
 
 const ProfilePage = () => {
   const authContext = useContext<any>(AuthContext)

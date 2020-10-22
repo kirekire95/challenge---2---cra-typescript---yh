@@ -12,7 +12,7 @@ import { AuthContext } from "../../context"
 export const EditUser = () => {
   const [errors, setErrors] = useState({})
   const [pictureValue, setPictureValue] = useState([])
-  const [uploadedImages, setUploadedImages] = useState([])
+  // const [uploadedImages, setUploadedImages] = useState([])
   const authContext = useContext(AuthContext)
 
   const { handleSubmit, handleChange, values } = useForm(createProductCallback)
@@ -239,8 +239,8 @@ const RelativeIconContainer = styled.div`
   }
 `
 
-const StyledRelativeIconContainer = styled(RelativeIconContainer)`
-  &:last-of-type {
-    margin: unset;
-  }
-`
+// const StyledRelativeIconContainer = styled(RelativeIconContainer)`
+//   &:last-of-type {
+//     margin: unset;
+//   }
+// `

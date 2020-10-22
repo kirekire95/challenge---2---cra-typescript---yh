@@ -14,7 +14,7 @@ export const UploadPicture = (props) => {
   const [file, setFile] = useState(null)
   const [modalOpen, setModalOpen] = useState(true)
 
-  const { getPictureValue } = props
+  // const { getPictureValue } = props
 
   console.log("UPLOAD PROPS", props)
 
