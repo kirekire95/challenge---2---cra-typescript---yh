@@ -2,7 +2,7 @@
 // @ts-nocheck
 
 import React, { useContext } from "react"
-import { Redirect } from "react-router-dom"
+import { Redirect, Route } from "react-router-dom"
 
 import { AuthContext } from "../context"
 
@@ -15,8 +15,12 @@ export const AuthRoute = (props: any) => {
   console.log("AUTHROUTE USERNAME", authContext.authState?.userInfo?.username)
 
   if (authContext.authState?.userInfo?.username) {
-    return <Component {...rest} />
+    return (
+      <Route {...rest} component={Component}>
+        <Component {...props} />
+      </Route>
+    )
   } else {
-    return <Redirect to="/" />
+    return <Redirect to="/login" />
   }
 }
