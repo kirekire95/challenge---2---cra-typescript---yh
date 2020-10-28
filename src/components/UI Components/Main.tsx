@@ -9,7 +9,7 @@ export const Main = (props: any) => {
       className={`${className}`}
       sx={{
         backgroundColor: "accent",
-        minHeight: "calc(100vh - var(--navbar-height) - var(--footer-height))",
+        minHeight: "calc(100vh - var(--navbar-height) - 129.6px)",
         margin: [1]
       }}
     >

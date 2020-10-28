@@ -1,5 +1,6 @@
 import React from "react"
 import { ThemeProvider as StyledThemeProvider, Styled } from "theme-ui"
+import { ReactQueryDevtools } from "react-query-devtools"
 
 import { GlobalStyle } from "../../styles"
 import Navbar from "./Navbar/Navbar"
@@ -27,6 +28,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons"
 
 import "@fortawesome/fontawesome-svg-core/styles.css"
+
 config.autoAddCss = false
 
 library.add(
@@ -46,6 +48,7 @@ library.add(
 export const Layout: React.FC = ({ children }) => {
   return (
     <StyledThemeProvider theme={theme}>
+      <ReactQueryDevtools initialIsOpen={false} />
       <Styled.root>
         <GlobalStyle />
         <Navbar />
