@@ -1,8 +1,11 @@
-import { useQuery, queryCache } from "react-query"
+// import { useQuery, queryCache } from "react-query"
+// TODO: Figure out what to do with queryCache
+import { useQuery } from "react-query"
 
 export function usePosts() {
   return useQuery("posts", () => fetchPosts(), {
-    onSuccess: () => console.log("Successfully got data with usePosts hook")
+    onSuccess: () =>
+      console.log("Successfully fetched data with the usePosts hook")
   })
 }
 
