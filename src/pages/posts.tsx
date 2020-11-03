@@ -1,3 +1,5 @@
+// Troubleshoot React Query here. Should not have to refetch every time. Also, what about suspense, it did not seem like ReactQueryConfigProvider did anything with suspense - still loading?
+
 import React from "react"
 
 import { Layout } from "../components/Layout/Layout"

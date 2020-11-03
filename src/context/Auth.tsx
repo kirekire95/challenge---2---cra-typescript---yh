@@ -1,4 +1,3 @@
-// Not in use yet, implement backend
 // FIXME: Remove this later
 // @ts-nocheck
 import React, { createContext, useEffect, useState } from "react"
