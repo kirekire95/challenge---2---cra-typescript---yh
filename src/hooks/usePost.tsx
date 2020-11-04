@@ -11,9 +11,10 @@ export async function fetchPost(postId) {
 export function usePost(postId) {
   return useQuery(["posts", postId], () => fetchPost(postId), {
     initialData: () => {
+      console.log("USEPOST QUERYCACHE", queryCache.getQueryData<any>("posts"))
       return queryCache
         .getQueryData<any>("posts")
-        ?.find((post) => post.id === postId)
+        ?.find((post) => post.id === Number(postId))
     },
     initialStale: true
   })
