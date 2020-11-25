@@ -1,6 +1,7 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "@emotion/styled"
 import { Styled } from "theme-ui"
+import { useMutation } from "@apollo/client"
 
 import { useForm } from "../../utilities"
 import {
@@ -9,26 +10,38 @@ import {
   ErrorContainer,
   SuccessContainer
 } from "../UI Components"
-import { useCreatePost } from "../../hooks"
+import { CREATE_POST, GET_POSTS } from "../../queries"
 
 export const PostAddForm = () => {
+  const [errors, setErrors] = useState({})
   const { handleSubmit, values, handleChange }: any = useForm(
     createPostCallback
   )
 
-  const createPost: any = useCreatePost({
-    title: values.title,
-    description: values.description,
-    category: values.category
+  const [createPost, createPostInfo]: any = useMutation(CREATE_POST, {
+    variables: values,
+    notifyOnNetworkStatusChange: true,
+    onCompleted: (result) => {
+      setErrors({})
+      console.log(result)
+    },
+    refetchQueries: [{ query: GET_POSTS }],
+    onError(err: any) {
+      if (err.message) {
+        setErrors(err.message)
+      }
+    }
   })
 
-  console.log("CreatePost ", createPost)
+  console.log("CreatePost Info", createPostInfo)
   console.log("CreatePost data", createPost.data)
   console.log("values", values)
 
   function createPostCallback() {
     createPost()
   }
+
+  console.log("SET ERRORS", errors)
 
   function displayNotification(input: any) {
     if (Object.keys(input).length > 0) {
@@ -59,7 +72,7 @@ export const PostAddForm = () => {
         <RelativeIconContainer>
           <input
             type="text"
-            placeholder="Titel..."
+            placeholder="Title..."
             name="title"
             value={values.title}
             onChange={handleChange}
@@ -70,7 +83,7 @@ export const PostAddForm = () => {
         <RelativeIconContainer>
           <input
             type="text"
-            placeholder="Kategori..."
+            placeholder="Category..."
             name="category"
             value={values.category}
             onChange={handleChange}
@@ -80,7 +93,7 @@ export const PostAddForm = () => {
         </RelativeIconContainer>
         <RelativeIconContainer>
           <textarea
-            placeholder="Beskrivning..."
+            placeholder="Description..."
             name="description"
             value={values.description}
             onChange={handleChange}
@@ -96,11 +109,11 @@ export const PostAddForm = () => {
               justifySelf: "flex-end"
             }}
           >
-            {createPost.isLoading ? "Skapar annons..." : "Skapa annons"}
+            {createPostInfo.loading ? "Skapar annons..." : "Skapa annons"}
           </Button>
         </div>
       </StyledForm>
-      {/* {displayNotification(createPost?.errors)} */}
+      {displayNotification(errors)}
     </React.Fragment>
   )
 }
@@ -168,7 +181,8 @@ const StyledForm = styled.form`
     border-bottom: 3px solid #ff7730;
   }
 
-  input:not([type="file"])::placeholder {
+  input:not([type="file"])::placeholder,
+  textarea::placeholder {
     color: ${(props: any) => props.theme.colors.placeholder};
   }
 `

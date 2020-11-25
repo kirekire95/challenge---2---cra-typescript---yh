@@ -1,26 +1,54 @@
-// Troubleshoot React Query here. Should not have to refetch every time. Also, what about suspense, it did not seem like ReactQueryConfigProvider did anything with suspense - still loading?
-
-import React from "react"
+/** @jsx jsx */
+import { jsx } from "theme-ui"
+import { useQuery } from "@apollo/client"
+import { Styled } from "theme-ui"
 
 import { Layout } from "../components/Layout/Layout"
-import { PostItem } from "../components/Post/PostItem"
-import { usePosts } from "../hooks"
+import { GET_POSTS } from "../queries"
+import {
+  Container,
+  ContainerFlex,
+  ContainerGrid,
+  Error,
+  Loading
+} from "../components/UI Components"
+import { PostItem } from "../components/Post"
 
 const Posts = () => {
-  const postsQuery = usePosts()
+  const allPostsQuery = useQuery(GET_POSTS)
 
-  console.log("posts postsQuery", postsQuery)
+  const { loading, data, error } = allPostsQuery
+  console.log("DATA", data)
 
   function renderContent() {
-    if (postsQuery.isLoading) {
-      return <h1>Loading...</h1>
-    } else {
+    if (error) {
       return (
-        <section>
-          {postsQuery.data?.map((post) => (
-            <PostItem key={post.id} data={post} />
-          ))}
-        </section>
+        <ContainerFlex>
+          <Error message="Data could not be fetched..." />
+        </ContainerFlex>
+      )
+    } else if (loading) {
+      return (
+        <ContainerFlex>
+          <Loading />
+        </ContainerFlex>
+      )
+    } else if (data) {
+      return (
+        <Container>
+          <Styled.h2 sx={{ textAlign: "center" }}>
+            Total Posts: {data.getPosts.length}
+          </Styled.h2>
+          <ContainerGrid>
+            {data.getPosts.length === 0 ? (
+              <h2>There is nothing to see here...</h2>
+            ) : (
+              data.getPosts.map((item) => (
+                <PostItem key={item.id} postData={item} />
+              ))
+            )}
+          </ContainerGrid>
+        </Container>
       )
     }
   }

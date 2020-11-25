@@ -127,6 +127,7 @@ const GET_POST = gql`
       id
       title
       description
+      category
       username
       createdAt
     }

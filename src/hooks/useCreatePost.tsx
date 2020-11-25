@@ -3,15 +3,12 @@ import { useMutation } from "@apollo/client"
 import { CREATE_POST } from "../queries"
 
 export function useCreatePost(variables) {
-  const [addPost] = useMutation(CREATE_POST, {
+  const addPost = useMutation(CREATE_POST, {
     variables,
-    onCompleted: () => {
-      console.log("Succeeded creating post")
-    },
-    onError: () => {
-      console.log("Error while creating post")
-    }
+    notifyOnNetworkStatusChange: true,
+    onCompleted: (result) => console.log(result),
+    onError: (err) => console.log(err)
   })
-  console.log("AddPost", addPost)
+  console.log("Add post", addPost)
   return addPost
 }

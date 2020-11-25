@@ -10,7 +10,7 @@ import { useQuery } from "@apollo/client"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 import { AuthContext } from "../context"
-import { GET_USERS } from "../queries"
+import { GET_POSTS } from "../queries"
 import {
   Loading,
   Error,
@@ -19,13 +19,12 @@ import {
   ContainerGrid
 } from "../components/UI Components"
 import { Layout } from "../components/Layout/Layout"
-import { UserCard } from "../components/User"
-import { PostAddForm } from "../components/Post"
+import { PostAddForm, PostItem } from "../components/Post"
 
 const Home = () => {
   const authContext = useContext<any>(AuthContext)
   console.log("home authContext", authContext)
-  const { loading, error, data } = useQuery(GET_USERS, {
+  const { loading, error, data } = useQuery(GET_POSTS, {
     skip: !authContext.authState?.userInfo?.username
   })
 
@@ -52,16 +51,16 @@ const Home = () => {
     } else if (data && authContext.authState?.userInfo?.username) {
       return (
         <React.Fragment>
-          <Styled.h1>Users</Styled.h1>
+          <Styled.h1>Posts</Styled.h1>
           <Styled.h2 sx={{ textAlign: "center" }}>
-            Total Users: {data.getUsers.length}
+            Total Posts: {data.getPosts.length}
           </Styled.h2>
           <ContainerGrid>
-            {data.getUsers.length === 0 ? (
+            {data.getPosts.length === 0 ? (
               <h2>There is nothing to see here...</h2>
             ) : (
-              data.getUsers.map((item) => (
-                <UserCard key={item._id} userData={item} />
+              data.getPosts.map((item) => (
+                <PostItem key={item.id} postData={item} />
               ))
             )}
           </ContainerGrid>

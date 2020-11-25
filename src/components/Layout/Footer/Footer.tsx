@@ -32,7 +32,7 @@ const Footer = () => {
             <li key={index}>
               <a
                 sx={{
-                  color: "#fff",
+                  color: "text",
                   textDecoration: "none",
                   fontSize: "2.75rem",
                   margin: "0 30px",
@@ -53,6 +53,7 @@ const Footer = () => {
       </ul>
       <p
         sx={{
+          color: "text",
           textAlign: "center",
           fontSize: "inherit"
         }}

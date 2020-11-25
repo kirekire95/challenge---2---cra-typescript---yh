@@ -59,7 +59,7 @@ export const commonFocus = {
 }
 
 export default {
-  initialColorModeName: "light",
+  initialColorModeName: "dark",
   useLocalStorage: true,
   useColorSchemeMediaQuery: true,
   ...tailwind,

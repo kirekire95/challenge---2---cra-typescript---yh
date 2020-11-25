@@ -10,8 +10,10 @@ import {
   NotFoundPage,
   Login,
   Register,
-  Posts,
+  ExternalPosts,
+  ExternalPost,
   Post,
+  Posts,
   ProfilePage
 } from "./pages"
 import { AuthRoute, PublicRoute } from "./routes"
@@ -42,8 +44,18 @@ const App = () => {
               <PublicRoute exact path="/" component={Home} />
               <PublicRoute exact path="/login" component={Login} />
               <PublicRoute exact path="/register" component={Register} />
+              <PublicRoute
+                exact
+                path="/externalposts"
+                component={ExternalPosts}
+              />
+              <PublicRoute
+                exact
+                path="/externalposts/:postId"
+                component={ExternalPost}
+              />
+              <PublicRoute exact path="/posts/:postId" component={Post} />
               <PublicRoute exact path="/posts" component={Posts} />
-              <PublicRoute exact path="/post/:postId" component={Post} />
               <PublicRoute default component={NotFoundPage} />
             </Switch>
           </Suspense>

@@ -22,7 +22,7 @@ const Navbar = () => {
 
   const authContext = useContext<any>(AuthContext)
 
-  const modes = ["light", "dark", "colorful"]
+  const modes = ["dark", "light", "colorful"]
 
   function cycleColorMode() {
     const currentTheme = modes.indexOf(colorMode)
