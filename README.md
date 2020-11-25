@@ -22,6 +22,7 @@
 
 - Add Image Upload in backend + drag and drop functionality in frontend?
 - Handle expired tokens as well as refresh tokens with the help of reactsecurity
+- User should be logged out or contacted to login again if token is expired?
 - Should be able to edit user without providing everything and just changing what I want, maybe just username
 
 ### Learnings

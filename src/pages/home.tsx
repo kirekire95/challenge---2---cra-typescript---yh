@@ -20,6 +20,7 @@ import {
 } from "../components/UI Components"
 import { Layout } from "../components/Layout/Layout"
 import { UserCard } from "../components/User"
+import { PostAddForm } from "../components/Post"
 
 const Home = () => {
   const authContext = useContext<any>(AuthContext)
@@ -85,18 +86,18 @@ const Home = () => {
     }
   }
 
-  // const ShowCreatePost = () => {
-  //   if (authContext.authState?.userInfo?.username) {
-  //     // return <PostAddForm />;
-  //   } else {
-  //     return null
-  //   }
-  // }
+  const ShowCreatePost = () => {
+    if (authContext.authState?.userInfo?.username) {
+      return <PostAddForm />
+    } else {
+      return null
+    }
+  }
 
   return (
     <Layout>
       <Container>
-        {/* {ShowCreatePost()} */}
+        {ShowCreatePost()}
         {renderContent()}
       </Container>
     </Layout>

@@ -109,14 +109,13 @@ const DELETE_USER = gql`
 // Posts
 
 const GET_POSTS = gql`
-  query getPosts {
+  query {
     getPosts {
       id
       title
       description
-      image
+      category
       username
-      published
       createdAt
     }
   }
@@ -128,34 +127,22 @@ const GET_POST = gql`
       id
       title
       description
-      image
       username
-      published
       createdAt
     }
   }
 `
 
 const CREATE_POST = gql`
-  mutation addPost(
-    $title: String!
-    $description: String!
-    $image: String
-    $published: Boolean!
-  ) {
-    addPost(
-      title: $title
-      description: $description
-      image: $image
-      published: $published
-    ) {
+  mutation addPost($title: String!, $description: String!, $category: String!) {
+    addPost(title: $title, description: $description, category: $category) {
       id
       title
       description
-      image
+      category
       username
-      published
       createdAt
+      message
     }
   }
 `
@@ -165,23 +152,21 @@ const EDIT_POST = gql`
     $postId: ID!
     $title: String!
     $description: String!
-    $image: String
-    $published: Boolean!
+    $category: String!
   ) {
     editPost(
       postId: $postId
       title: $title
       description: $description
-      image: $image
-      published: $published
+      category: $category
     ) {
       id
       title
       description
-      image
+      category
       username
-      published
       createdAt
+      message
     }
   }
 `
@@ -192,10 +177,10 @@ const DELETE_POST = gql`
       id
       title
       description
-      image
+      category
       username
-      published
       createdAt
+      message
     }
   }
 `
