@@ -12,13 +12,19 @@ import {
 import { useCreatePost } from "../../hooks"
 
 export const PostAddForm = () => {
+  const { handleSubmit, values, handleChange }: any = useForm(
+    createPostCallback
+  )
+
   const createPost: any = useCreatePost({
-    title: "hehehehehe",
-    description: "hahahah",
-    category: "heheheheheh"
+    title: values.title,
+    description: values.description,
+    category: values.category
   })
-  console.log("CreatePost", createPost.data)
-  const { handleSubmit, values }: any = useForm(createPostCallback)
+
+  console.log("CreatePost ", createPost)
+  console.log("CreatePost data", createPost.data)
+  console.log("values", values)
 
   function createPostCallback() {
     createPost()
@@ -55,7 +61,8 @@ export const PostAddForm = () => {
             type="text"
             placeholder="Titel..."
             name="title"
-            defaultValue={values.title}
+            value={values.title}
+            onChange={handleChange}
             required
           />
           <DocumentTextIcon className="hero-icon" />
@@ -65,7 +72,8 @@ export const PostAddForm = () => {
             type="text"
             placeholder="Kategori..."
             name="category"
-            defaultValue={values.category}
+            value={values.category}
+            onChange={handleChange}
             required
           />
           <DocumentTextIcon className="hero-icon" />
@@ -74,7 +82,8 @@ export const PostAddForm = () => {
           <textarea
             placeholder="Beskrivning..."
             name="description"
-            defaultValue={values.description}
+            value={values.description}
+            onChange={handleChange}
             required
           />
           <DocumentTextIcon className="hero-icon" style={{ height: "3rem" }} />
