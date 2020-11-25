@@ -2,13 +2,9 @@ import { useMutation } from "@apollo/client"
 
 import { CREATE_POST } from "../queries"
 
-export function useCreatePost() {
+export function useCreatePost(variables) {
   const [addPost] = useMutation(CREATE_POST, {
-    variables: {
-      title: "title from react",
-      description: "description from react",
-      category: "category from react"
-    },
+    variables,
     onCompleted: () => {
       console.log("Succeeded creating post")
     },

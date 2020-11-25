@@ -12,7 +12,11 @@ import {
 import { useCreatePost } from "../../hooks"
 
 export const PostAddForm = () => {
-  const createPost: any = useCreatePost()
+  const createPost: any = useCreatePost({
+    title: "hehehehehe",
+    description: "hahahah",
+    category: "heheheheheh"
+  })
   console.log("CreatePost", createPost.data)
   const { handleSubmit, values }: any = useForm(createPostCallback)
 
